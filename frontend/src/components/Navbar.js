@@ -1,0 +1,101 @@
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+import { Button } from "../components/ui/button";
+
+const NAV_LINKS = [
+  { label: "Accueil", href: "#hero" },
+  { label: "A propos", href: "#about" },
+  { label: "Formations", href: "#formations" },
+  { label: "Quiz Gratuit", href: "#quiz" },
+  { label: "Webinaire", href: "#webinar" },
+  { label: "Livre", href: "#book" },
+  { label: "Blog", href: "#blog" },
+  { label: "Contact", href: "#contact" },
+];
+
+const WHATSAPP_LINK = "https://wa.me/22600000000?text=Bonjour%20Coach%20Lady%20Wassa%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20formations.";
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <nav
+      data-testid="navbar"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "navbar-glass shadow-sm" : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo */}
+          <a href="#hero" data-testid="nav-logo" className="flex items-center gap-2">
+            <span className="text-xl md:text-2xl font-bold text-[#0B3A5A]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+              Lady Wassa
+            </span>
+          </a>
+
+          {/* Desktop Nav */}
+          <div className="hidden lg:flex items-center gap-6">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                data-testid={`nav-link-${link.href.slice(1)}`}
+                className="text-sm text-[#4A4A4A] hover:text-[#0B3A5A] transition-colors font-medium"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+              <Button
+                data-testid="nav-cta-whatsapp"
+                className="bg-[#0B3A5A] hover:bg-[#145A8A] text-white rounded-full px-6 text-sm"
+              >
+                Contactez-moi
+              </Button>
+            </a>
+          </div>
+
+          {/* Mobile menu toggle */}
+          <button
+            data-testid="nav-mobile-toggle"
+            className="lg:hidden p-2 text-[#0B3A5A]"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Nav */}
+      {menuOpen && (
+        <div data-testid="nav-mobile-menu" className="lg:hidden navbar-glass border-t border-black/5">
+          <div className="px-6 py-4 flex flex-col gap-3">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="text-sm text-[#4A4A4A] hover:text-[#0B3A5A] py-2 font-medium"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="mt-2">
+              <Button className="w-full bg-[#0B3A5A] hover:bg-[#145A8A] text-white rounded-full text-sm">
+                Contactez-moi
+              </Button>
+            </a>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+}
