@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Calendar } from "lucide-react";
 import { Button } from "../components/ui/button";
 
-const WHATSAPP_LINK = "https://wa.me/22600000000?text=Bonjour%20Coach%20Lady%20Wassa%2C%20je%20souhaite%20reserver%20une%20seance%20decouverte.";
+const WHATSAPP_LINK = "https://wa.me/22657575701?text=Bonjour%20Coach%20Lady%20Wassa%2C%20je%20souhaite%20reserver%20une%20seance%20decouverte.";
 
 export default function HeroSection() {
   return (
@@ -37,10 +37,11 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-base md:text-lg text-[#4A4A4A] max-w-xl mb-8 leading-relaxed">
-              Aide dirigeants, femmes actives et etudiants a depasser leurs peurs
-              et atteindre leurs objectifs grace aux neurosciences appliquees.
+              J'aide les dirigeants, etudiants et femmes actives a utiliser leur cerveau
+              comme un veritable levier de transformation pour atteindre leurs objectifs
+              personnels et professionnels, sans stress ni blocages.
               <span className="block mt-2 text-sm text-[#4A4A4A]/70">
-                100+ clients transformes &bull; 12,000+ prospects &bull; Ouagadougou, Burkina Faso
+                100+ clients transformes &bull; 12,000+ abonnes &bull; Ouagadougou, Burkina Faso
               </span>
             </p>
 
@@ -111,6 +112,10 @@ export default function HeroSection() {
               {/* RTB badge */}
               <div className="absolute -top-2 -right-2 bg-[#0B3A5A] text-white rounded-full px-4 py-2 text-xs font-bold shadow-lg">
                 Vu sur RTB TV
+              </div>
+              {/* Facebook badge */}
+              <div className="absolute top-16 -right-2 bg-[#1877F2] text-white rounded-full px-4 py-2 text-xs font-bold shadow-lg">
+                12K+ abonnes
               </div>
             </div>
           </motion.div>

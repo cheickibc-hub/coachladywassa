@@ -4,35 +4,35 @@ import { ExternalLink, Play, Mic } from "lucide-react";
 const PRESS_ARTICLES = [
   {
     title: "Coach Lady Wassa : Comment les neurosciences transforment la vie des Africains",
-    source: "Jeune Afrique",
-    date: "Janvier 2025",
-    snippet: "Interview exclusive de Coach Lady Wassa, la premiere coach neurosciences certifiee du Burkina Faso...",
+    source: "RTB - Radiodiffusion Television du Burkina",
+    date: "2025",
+    snippet: "Passage au Journal de 13h de la RTB. Coach Lady Wassa presente les neurosciences appliquees au developpement personnel...",
   },
   {
-    title: "5 femmes leaders qui changent l'Afrique",
-    source: "Elle Afrique",
-    date: "Novembre 2024",
-    snippet: "Lady Wassa figuree parmi les 5 femmes coachant les leaders africains...",
-  },
-  {
-    title: "Neurosciences et entrepreneuriat au Burkina",
+    title: "Coaching en neurosciences : une nouvelle approche au Burkina Faso",
     source: "Sidwaya",
-    date: "Mars 2025",
-    snippet: "Reportage sur l'essor du coaching neurosciences en Afrique de l'Ouest...",
+    date: "2024",
+    snippet: "Lady Wassa, pionniere du coaching en neurosciences au Burkina Faso, aide dirigeants et femmes actives a depasser leurs blocages...",
+  },
+  {
+    title: "12,000 abonnes : Le succes de Coach Lady Wassa sur les reseaux",
+    source: "L'Observateur Paalga",
+    date: "2025",
+    snippet: "Avec plus de 12,000 followers sur Facebook, Coach Lady Wassa est devenue une reference du coaching au Burkina Faso...",
   },
 ];
 
 const TV_APPEARANCES = [
   {
-    show: "Journal 13h RTB",
-    topic: "Les neurosciences au service du developpement personnel",
+    show: "Journal 13h - RTB",
+    topic: "Les neurosciences au service du developpement personnel au Burkina Faso",
     date: "2025",
     type: "tv",
   },
   {
-    show: "Podcast Transformation",
-    topic: "Neurosciences et changement personnel",
-    date: "Mars 2025",
+    show: "Facebook Live - Coach Lady WASSA",
+    topic: "Sessions live de coaching et neurosciences appliquees",
+    date: "Hebdomadaire",
     type: "podcast",
   },
 ];
@@ -67,7 +67,7 @@ export default function MediaSection() {
         {/* Media logos marquee */}
         <div className="mb-16 overflow-hidden py-6 border-y border-black/5">
           <div className="flex gap-16 items-center animate-marquee whitespace-nowrap">
-            {["RTB Television", "Jeune Afrique", "Elle Afrique", "Sidwaya", "TV5 Monde", "RFI", "RTB Television", "Jeune Afrique", "Elle Afrique", "Sidwaya", "TV5 Monde", "RFI"].map((name, i) => (
+            {["RTB Television", "Sidwaya", "L'Observateur Paalga", "Facebook 12K+", "Burkina 24", "RTB Television", "Sidwaya", "L'Observateur Paalga", "Facebook 12K+", "Burkina 24"].map((name, i) => (
               <span key={i} className="text-2xl font-bold text-[#0B3A5A]/15 tracking-tight" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                 {name}
               </span>

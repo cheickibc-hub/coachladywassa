@@ -6,15 +6,15 @@ import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 import axios from "axios";
 
-const WHATSAPP_LINK = "https://wa.me/22600000000?text=Bonjour%20Coach%20Lady%20Wassa%2C%20j'ai%20une%20question.";
-const BOOKING_LINK = "https://wa.me/22600000000?text=Bonjour%20Coach%2C%20je%20souhaite%20reserver%20une%20seance%20decouverte%20gratuite%20de%2030%20min.";
+const WHATSAPP_LINK = "https://wa.me/22657575701?text=Bonjour%20Coach%20Lady%20Wassa%2C%20j'ai%20une%20question.";
+const BOOKING_LINK = "https://wa.me/22657575701?text=Bonjour%20Coach%2C%20je%20souhaite%20reserver%20une%20seance%20decouverte%20gratuite%20de%2030%20min.";
 
 const CONTACT_METHODS = [
   {
     icon: MessageCircle,
     title: "WhatsApp",
     subtitle: "Le plus rapide",
-    detail: "+226 XX XX XX XX",
+    detail: "+226 57 57 57 01",
     response: "Reponse < 1h",
     color: "#25D366",
     link: WHATSAPP_LINK,

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { BookOpen, Headphones, ShoppingBag, Star } from "lucide-react";
 import { Button } from "../components/ui/button";
 
-const WHATSAPP_BASE = "https://wa.me/22600000000?text=";
+const WHATSAPP_BASE = "https://wa.me/22657575701?text=";
 
 const FORMATS = [
   {

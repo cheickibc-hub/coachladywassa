@@ -13,7 +13,7 @@ const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ];
 
-const WHATSAPP_LINK = "https://wa.me/22600000000?text=Bonjour%20Coach%20Lady%20Wassa%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20formations.";
+const WHATSAPP_LINK = "https://wa.me/22657575701?text=Bonjour%20Coach%20Lady%20Wassa%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20formations.";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
