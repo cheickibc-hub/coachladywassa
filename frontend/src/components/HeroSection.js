@@ -99,14 +99,11 @@ export default function HeroSection() {
           >
             <div className="relative">
               <div className="absolute -top-4 -left-4 w-full h-full bg-[#D4AF37]/10 rounded-3xl" />
-              <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-xl">
-                <img
-                  src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/nnfe7pt9_image.png"
-                  alt="Coach Lady Wassa - Coach Neurosciences Ouagadougou"
-                  className="w-[200%] h-[200%] object-cover"
-                  style={{ objectPosition: '85% 8%' }}
-                />
-              </div>
+              <img
+                src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/axrf2auk_image.png"
+                alt="Coach Lady Wassa - Coach Neurosciences Ouagadougou"
+                className="relative w-full rounded-3xl object-cover object-top aspect-[4/5] shadow-xl"
+              />
               {/* Floating badge */}
               <div className="absolute -bottom-4 -left-4 glass-card rounded-2xl px-5 py-3 animate-float">
                 <p className="text-sm font-bold text-[#0B3A5A]">Diplomee Neurosciences</p>

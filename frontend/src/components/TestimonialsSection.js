@@ -1,5 +1,24 @@
 import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, Volume2 } from "lucide-react";
+
+const AUDIO_TESTIMONIALS = [
+  {
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/gxan6rt5_WhatsApp%20Audio%202026-04-16%20at%2009.51.26.ogg",
+    name: "Temoignage audio 1",
+  },
+  {
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/kd8s9k7x_WhatsApp%20Audio%202026-04-16%20at%2009.57.30.ogg",
+    name: "Temoignage audio 2",
+  },
+  {
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/8uszmbij_WhatsApp%20Audio%202026-04-16%20at%2010.03.44.ogg",
+    name: "Temoignage audio 3",
+  },
+  {
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/fqz9dtpm_WhatsApp%20Audio%202026-04-16%20at%2009.58.10.ogg",
+    name: "Temoignage audio 4",
+  },
+];
 
 const WRITTEN_TESTIMONIALS = [
   {
@@ -97,6 +116,38 @@ export default function TestimonialsSection() {
           </motion.div>
         </div>
 
+        {/* Audio Testimonials */}
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h3
+            className="text-xl font-bold text-[#0B3A5A] mb-6 text-center"
+            style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+          >
+            <Volume2 className="inline-block w-5 h-5 mr-2 text-[#D4AF37]" />
+            Temoignages Audio
+          </h3>
+          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+            {AUDIO_TESTIMONIALS.map((audio, i) => (
+              <div
+                key={i}
+                data-testid={`audio-testimonial-${i}`}
+                className="bg-[#FAF9F6] rounded-xl p-4 border border-black/5"
+              >
+                <p className="text-xs text-[#D4AF37] font-semibold mb-2">{audio.name}</p>
+                <audio controls className="w-full h-10" preload="none">
+                  <source src={audio.url} type="audio/ogg" />
+                  Votre navigateur ne supporte pas l'audio.
+                </audio>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Written Testimonials */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {WRITTEN_TESTIMONIALS.map((t, i) => (
@@ -126,6 +177,40 @@ export default function TestimonialsSection() {
           ))}
         </div>
 
+        {/* Event Photos */}
+        <motion.div
+          className="mt-16 grid md:grid-cols-2 gap-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="rounded-2xl overflow-hidden shadow-lg">
+            <img
+              src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/ci1jbbzz_image.png"
+              alt="Coach Lady Wassa - Ceremonie remise de cheque"
+              className="w-full object-cover aspect-[4/3]"
+              loading="lazy"
+            />
+            <div className="bg-white p-4">
+              <p className="text-sm font-bold text-[#0B3A5A]">Ceremonie officielle</p>
+              <p className="text-xs text-[#4A4A4A]">Reconnaissance du travail de Coach Lady Wassa</p>
+            </div>
+          </div>
+          <div className="rounded-2xl overflow-hidden shadow-lg">
+            <img
+              src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/w90xv2a4_image.png"
+              alt="Coach Lady Wassa avec leaders communautaires"
+              className="w-full object-cover aspect-[4/3]"
+              loading="lazy"
+            />
+            <div className="bg-white p-4">
+              <p className="text-sm font-bold text-[#0B3A5A]">Impact communautaire</p>
+              <p className="text-xs text-[#4A4A4A]">Lady Wassa presentant son livre aux leaders de la communaute</p>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Stats */}
         <motion.div
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
@@ -138,7 +223,7 @@ export default function TestimonialsSection() {
             { number: "100+", label: "Clients transformes" },
             { number: "95%", label: "Taux de satisfaction" },
             { number: "4-8", label: "Semaines de transformation" },
-            { number: "12K+", label: "Prospects qualifies" },
+            { number: "12K+", label: "Abonnes" },
           ].map((stat, i) => (
             <div key={i} className="text-center p-6 rounded-2xl bg-[#0B3A5A]/[0.03]">
               <p className="text-3xl md:text-4xl font-bold text-[#0B3A5A]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>

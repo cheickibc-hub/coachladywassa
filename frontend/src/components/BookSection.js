@@ -8,23 +8,20 @@ const FORMATS = [
   {
     icon: BookOpen,
     name: "Ebook / PDF",
-    price: "12,99",
     detail: "Format digital, livraison instantanee",
-    cta: "Telecharger",
+    cta: "Commander",
   },
   {
     icon: ShoppingBag,
     name: "Livre papier",
-    price: "24,99",
     detail: "A5, 200 pages, livraison 3-7 jours",
     cta: "Commander",
   },
   {
     icon: Headphones,
     name: "Audiobook",
-    price: "9,99",
     detail: "MP3 streaming, duree 4h30",
-    cta: "Ecouter",
+    cta: "Commander",
   },
 ];
 
@@ -122,7 +119,7 @@ export default function BookSection() {
                       </div>
                     </div>
                     <a
-                      href={`${WHATSAPP_BASE}Bonjour, je souhaite commander le livre "${f.name}" a ${f.price}EUR.`}
+                      href={`${WHATSAPP_BASE}Bonjour, je souhaite commander le livre format "${f.name}".`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -131,7 +128,7 @@ export default function BookSection() {
                         size="sm"
                         className="bg-[#0B3A5A] hover:bg-[#145A8A] text-white rounded-full text-xs px-4"
                       >
-                        {f.cta} {f.price}&euro;
+                        {f.cta}
                       </Button>
                     </a>
                   </div>

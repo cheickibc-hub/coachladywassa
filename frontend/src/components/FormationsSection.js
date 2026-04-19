@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "../components/ui/button";
 
 const WHATSAPP_BASE = "https://wa.me/22657575701?text=";
@@ -8,8 +8,6 @@ const FORMATIONS = [
   {
     tier: "STARTER",
     name: "Peur 101 Starter",
-    price: "97",
-    priceFCFA: "63,600 FCFA",
     duration: "2 semaines",
     format: "5 videos + Workbook PDF",
     audience: "Decouverte, tous niveaux",
@@ -26,8 +24,6 @@ const FORMATIONS = [
   {
     tier: "STANDARD",
     name: "Transformation Cerebrale",
-    price: "297",
-    priceFCFA: "195,000 FCFA",
     duration: "4 semaines",
     format: "15 videos + Groupe coaching",
     audience: "Femmes actives, premiers acheteurs",
@@ -45,8 +41,6 @@ const FORMATIONS = [
   {
     tier: "PREMIUM",
     name: "Maitre Ton Cerveau",
-    price: "697",
-    priceFCFA: "457,000 FCFA",
     duration: "8 semaines",
     format: "20 videos + 2 seances 1-to-1",
     audience: "Dirigeants, engagement serieux",
@@ -64,8 +58,6 @@ const FORMATIONS = [
   {
     tier: "VIP",
     name: "Transformation Annuelle",
-    price: "1,997",
-    priceFCFA: "1,310,000 FCFA",
     duration: "12 mois",
     format: "Tous videos + Coaching illimite",
     audience: "Leaders, vision long-terme",
@@ -130,7 +122,6 @@ export default function FormationsSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              {/* Badge */}
               {f.badge && (
                 <span
                   className={`absolute top-4 right-4 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full ${
@@ -145,12 +136,10 @@ export default function FormationsSection() {
                 </span>
               )}
 
-              {/* Tier label */}
               <span className={`text-xs uppercase tracking-[0.15em] font-semibold mb-2 ${f.isPremium ? "text-[#D4AF37]" : "text-[#D4AF37]"}`}>
                 {f.tier}
               </span>
 
-              {/* Name */}
               <h3
                 className={`text-xl font-bold mb-4 ${f.isPremium ? "text-white" : "text-[#0B3A5A]"}`}
                 style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
@@ -158,17 +147,6 @@ export default function FormationsSection() {
                 {f.name}
               </h3>
 
-              {/* Price */}
-              <div className="mb-4">
-                <span className={`text-4xl font-bold ${f.isPremium ? "text-white" : "text-[#0B3A5A]"}`}>
-                  {f.price}&euro;
-                </span>
-                <p className={`text-xs mt-1 ${f.isPremium ? "text-white/60" : "text-[#4A4A4A]/60"}`}>
-                  {f.priceFCFA}
-                </p>
-              </div>
-
-              {/* Details */}
               <p className={`text-sm mb-1 ${f.isPremium ? "text-white/80" : "text-[#4A4A4A]"}`}>
                 {f.duration} &bull; {f.format}
               </p>
@@ -176,7 +154,6 @@ export default function FormationsSection() {
                 {f.audience}
               </p>
 
-              {/* Features */}
               <div className="flex-1 space-y-3 mb-6">
                 {f.features.map((feat, j) => (
                   <div key={j} className="flex items-start gap-2">
@@ -186,9 +163,8 @@ export default function FormationsSection() {
                 ))}
               </div>
 
-              {/* CTA */}
               <a
-                href={`${WHATSAPP_BASE}Bonjour Coach, je suis interesse(e) par la formation ${f.name} (${f.price}EUR).`}
+                href={`${WHATSAPP_BASE}Bonjour Coach, je suis interesse(e) par la formation ${f.name}. Pouvez-vous me donner plus d'informations ?`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -202,7 +178,8 @@ export default function FormationsSection() {
                       : "bg-[#0B3A5A]/10 hover:bg-[#0B3A5A] text-[#0B3A5A] hover:text-white"
                   }`}
                 >
-                  S'inscrire {f.price}&euro;
+                  <MessageCircle className="mr-2 w-4 h-4" />
+                  Nous contacter
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </a>
