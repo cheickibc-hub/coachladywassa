@@ -1,0 +1,145 @@
+{
+  "theme": "light",
+  "archetype": "1 (Organic & Earthy) blended with 4 (Swiss/High-Contrast)",
+  "color_palette": {
+    "background_primary": "#FAF9F6",
+    "background_secondary": "#FFFFFF",
+    "background_dark": "#0B1D2E",
+    "text_primary": "#1A1A1A",
+    "text_secondary": "#4A4A4A",
+    "brand_primary": "#0B3A5A",
+    "brand_accent": "#D4AF37",
+    "interactive_default": "#0B3A5A",
+    "interactive_hover": "#145A8A",
+    "interactive_active": "#082B42"
+  },
+  "typography": {
+    "headings_font": "Cabinet Grotesk",
+    "body_font": "Outfit",
+    "scale": {
+      "h1": "text-5xl sm:text-6xl tracking-tight leading-none",
+      "h2": "text-3xl sm:text-4xl tracking-tight",
+      "h3": "text-xl sm:text-2xl",
+      "body": "text-base leading-relaxed",
+      "small": "text-sm uppercase tracking-[0.2em]"
+    }
+  },
+  "layout_spacing": {
+    "container_padding": "px-6 md:px-12 lg:px-24",
+    "section_spacing": "py-24 md:py-32",
+    "grid_gap": "gap-8 md:gap-12",
+    "border_radius": "rounded-2xl"
+  },
+  "surface_strategies": {
+    "cards": "bg-white shadow-sm border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all duration-300",
+    "glass": "backdrop-blur-xl bg-white/70 border border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.04)]",
+    "premium_card": "relative overflow-hidden border border-[#D4AF37]/30 bg-[#0B3A5A] text-white shadow-2xl"
+  },
+  "components_to_use": {
+    "forms": "Shadcn UI (Input, Button, Label)",
+    "faq": "Shadcn UI (Accordion)",
+    "icons": "lucide-react",
+    "animations": "framer-motion",
+    "scrolling": "lenis",
+    "marquee": "react-fast-marquee"
+  },
+  "sections_breakdown": [
+    {
+      "name": "Hero",
+      "layout": "grid md:grid-cols-12 gap-12 items-center",
+      "design_rules": "Asymmetrical layout. Large H1 on left (col-span-7). Image on right (col-span-5) with soft rounded edges."
+    },
+    {
+      "name": "Problem Agitation",
+      "layout": "Bento Grid (Tetris mode) - md:grid-cols-12 gap-8",
+      "design_rules": "3 distinct cards outlining Internal Problem, External Problem, and Promise. Use subtle icons and generous padding."
+    },
+    {
+      "name": "About",
+      "layout": "Split layout",
+      "design_rules": "Include the video asset. Warm narrative text."
+    },
+    {
+      "name": "Testimonials",
+      "layout": "Grid or Carousel",
+      "design_rules": "Use glassmorphism cards to hold the WhatsApp screenshots to make them look elegant."
+    },
+    {
+      "name": "Formations Catalog",
+      "layout": "grid md:grid-cols-4 gap-6",
+      "design_rules": "4 tiers. The VIP tier must use the premium_card surface strategy to stand out."
+    },
+    {
+      "name": "Lead Magnet Quiz",
+      "layout": "Centered interactive container",
+      "design_rules": "Use solid background with a hard bottom border or glassmorphism. Keep UI frictionless."
+    },
+    {
+      "name": "Webinar",
+      "layout": "grid md:grid-cols-2",
+      "design_rules": "Form on the right. Value prop on the left. High contrast section (e.g., bg_dark)."
+    },
+    {
+      "name": "Book Promotion",
+      "layout": "Flex/Grid",
+      "design_rules": "Display CSS-based book representation, 3 format options (Ebook, Audio, Print)."
+    },
+    {
+      "name": "Media/Press",
+      "layout": "Marquee",
+      "design_rules": "Editorial Ribbon mode. Pale background, dark text/logos, massive gaps, slow moving."
+    },
+    {
+      "name": "Blog",
+      "layout": "grid md:grid-cols-3",
+      "design_rules": "Clean cards with image, category tag, and title."
+    },
+    {
+      "name": "FAQ",
+      "layout": "Max-w-3xl center",
+      "design_rules": "Shadcn accordion. Minimal borders."
+    },
+    {
+      "name": "Contact",
+      "layout": "grid md:grid-cols-2",
+      "design_rules": "Form + Direct WhatsApp CTA button."
+    }
+  ],
+  "image_urls": {
+    "hero_portrait": {
+      "url": "https://images.pexels.com/photos/5466267/pexels-photo-5466267.jpeg",
+      "description": "Professional African American woman, represents Coach Lady Wassa."
+    },
+    "about_video": {
+      "url": "https://customer-assets.emergentagent.com/job_be26550a-7109-49a1-b5f6-ce556eeedf7e/artifacts/14euo2e9_IMG_7243.MP4",
+      "description": "Lady Wassa TV appearance video."
+    },
+    "testimonial_1": {
+      "url": "https://customer-assets.emergentagent.com/job_be26550a-7109-49a1-b5f6-ce556eeedf7e/artifacts/m9454gdm_WhatsApp%20Image%202026-04-16%20at%2010.08.12.jpeg",
+      "description": "WhatsApp client testimonial 1"
+    },
+    "testimonial_2": {
+      "url": "https://customer-assets.emergentagent.com/job_be26550a-7109-49a1-b5f6-ce556eeedf7e/artifacts/87nwjs1w_WhatsApp%20Image%202026-04-16%20at%2010.06.37.jpeg",
+      "description": "WhatsApp client testimonial 2"
+    },
+    "neuroscience_abstract": {
+      "url": "https://images.pexels.com/photos/9228390/pexels-photo-9228390.jpeg",
+      "description": "Abstract brain motif for neuroscience sections."
+    },
+    "media_bg": {
+      "url": "https://images.unsplash.com/photo-1589186161289-9eb8898086df",
+      "description": "TV Studio background for media section."
+    }
+  },
+  "instructions_to_main_agent": [
+    "Ensure all text is in French as requested.",
+    "Do NOT use 'Inter', 'Roboto', 'Open Sans', 'Lato', 'Syne' for Headings. Use 'Cabinet Grotesk' or 'Outfit'.",
+    "Follow 'The Anti-Default Rule' - avoid center-everything, use grids and asymmetry.",
+    "Include 'data-testid' on all interactive elements (buttons, inputs, links).",
+    "Use Lenis for smooth scrolling.",
+    "For CTAs, primary action is WhatsApp redirect.",
+    "Never use via.placeholder.com. ONLY use the provided image URLs.",
+    "Implement Shadcn for UI components like Accordion, Input, Button, but customize to fit the theme (remove default Vercel look).",
+    "Apply Framer Motion for scroll reveal animations and micro-interactions."
+  ]
+}
