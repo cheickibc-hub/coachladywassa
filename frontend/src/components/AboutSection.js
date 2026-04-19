@@ -2,11 +2,13 @@ import { motion } from "framer-motion";
 import { Check, Brain, Heart, Zap } from "lucide-react";
 
 const CREDENTIALS = [
-  "Diplomee en neurosciences appliquees",
+  "MasterCoach ICI certifie",
+  "Life & Corporate Coach",
+  "Cabinet Mindset Coaching",
   "Auteure du livre \"L'art de faire face a ses peurs\"",
-  "100+ clients transformes depuis 2018",
+  "100+ clients transformes",
+  "Creatrice du programme \"Voix de Reine\"",
   "Passages TV sur RTB (Journal 13h)",
-  "Coach certifiee en developpement personnel",
 ];
 
 const PILLARS = [
@@ -117,9 +119,12 @@ export default function AboutSection() {
               Ma Mission
             </p>
             <p className="text-lg md:text-xl font-medium leading-relaxed opacity-90">
-              Aider chaque personne a utiliser son cerveau comme levier de transformation.
-              Creer une Afrique ou les neurosciences sont accessibles a tous pour transformer
-              les blocages en pouvoir personnel.
+              Vous accompagner a reveler le meilleur de votre personnalite afin de batir
+              une vie epanouie, de qualite et surtout alignee, en exploitant pleinement
+              les incroyables potentiels caches dans votre cerveau.
+            </p>
+            <p className="text-sm text-[#D4AF37] mt-4 italic">
+              "Votre cerveau, votre meilleur allie : transformez votre mindset, transformez votre vie."
             </p>
           </div>
         </motion.div>

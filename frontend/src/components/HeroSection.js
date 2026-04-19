@@ -22,7 +22,7 @@ export default function HeroSection() {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <span className="inline-block text-xs uppercase tracking-[0.2em] text-[#D4AF37] font-semibold mb-4">
-              Coach en Neurosciences Appliquees
+              Cabinet Mindset Coaching &bull; Life &amp; Corporate Coach
             </span>
 
             <h1
@@ -106,8 +106,8 @@ export default function HeroSection() {
               />
               {/* Floating badge */}
               <div className="absolute -bottom-4 -left-4 glass-card rounded-2xl px-5 py-3 animate-float">
-                <p className="text-sm font-bold text-[#0B3A5A]">Diplomee Neurosciences</p>
-                <p className="text-xs text-[#4A4A4A]">Auteure &amp; Coach certifiee</p>
+                <p className="text-sm font-bold text-[#0B3A5A]">MasterCoach ICI certifie</p>
+                <p className="text-xs text-[#4A4A4A]">Auteure &amp; Life Coach</p>
               </div>
               {/* RTB badge */}
               <div className="absolute -top-2 -right-2 bg-[#0B3A5A] text-white rounded-full px-4 py-2 text-xs font-bold shadow-lg">

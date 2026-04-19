@@ -6,6 +6,7 @@ import ProblemSection from "./components/ProblemSection";
 import AboutSection from "./components/AboutSection";
 import TestimonialsSection from "./components/TestimonialsSection";
 import FormationsSection from "./components/FormationsSection";
+import ServicesSection from "./components/ServicesSection";
 import QuizSection from "./components/QuizSection";
 import WebinarSection from "./components/WebinarSection";
 import BookSection from "./components/BookSection";
@@ -27,6 +28,7 @@ const HomePage = () => {
       <ProblemSection />
       <AboutSection />
       <TestimonialsSection />
+      <ServicesSection />
       <FormationsSection />
       <QuizSection apiUrl={API} />
       <WebinarSection apiUrl={API} />
