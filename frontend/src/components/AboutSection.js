@@ -150,29 +150,6 @@ export default function AboutSection() {
             );
           })}
         </div>
-
-        {/* Social Proof - Facebook */}
-        <motion.div
-          className="mt-16 max-w-md mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="glass-card rounded-2xl overflow-hidden shadow-lg">
-            <img
-              src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/nnfe7pt9_image.png"
-              alt="Coach Lady Wassa - Page Facebook officielle - 12K abonnes"
-              className="w-full object-cover object-top"
-              style={{ maxHeight: '400px' }}
-              loading="lazy"
-            />
-            <div className="p-4 text-center bg-white">
-              <p className="text-sm font-bold text-[#0B3A5A]">Page Facebook officielle</p>
-              <p className="text-xs text-[#4A4A4A]">12K+ abonnes &bull; +226 57 57 57 01</p>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
