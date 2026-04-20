@@ -51,9 +51,9 @@ export default function BookSection() {
           >
             <div className="relative">
               <img
-                src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/blw908x8_image.png"
-                alt="L'art de faire face à ses peurs - Coach Lady Wassa"
-                className="w-64 md:w-72 rounded-lg shadow-2xl"
+                src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/l10szq30_image.png"
+                alt="L'art de faire face à ses peurs - Coach Lady Wassa Traoré - Couverture du livre"
+                className="w-72 md:w-80 rounded-lg shadow-2xl"
               />
             </div>
           </motion.div>
