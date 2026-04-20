@@ -4,15 +4,15 @@ import { Play } from "lucide-react";
 const VIDEOS = [
   {
     title: "Voyage de Reconstruction Consciente : Explorer Nos Automatismes",
-    description: "Premiere partie du programme \"Voix des Reines\". Explorez le concept des automatismes inconscients et comment les reprogrammer.",
+    description: "Première partie du programme \"Voix des Reines\". Explorez le concept des automatismes inconscients et comment les reprogrammer.",
     embedUrl: "https://www.loom.com/embed/55be99c409224cb6937ab8689ed0e66f",
     thumbnail: "https://cdn.loom.com/sessions/thumbnails/55be99c409224cb6937ab8689ed0e66f-18e4bc18de7748ed.jpg",
     duration: "34 min",
     program: "Voix de Reine",
   },
   {
-    title: "Oser etre soi-meme : les quatre etapes essentielles",
-    description: "Les 4 etapes pour oser etre soi-meme : la clarte, la confrontation, le courage et la coherence.",
+    title: "Oser être soi-même : les quatre étapes essentielles",
+    description: "Les 4 étapes pour oser être soi-même : la clarté, la confrontation, le courage et la cohérence.",
     embedUrl: "https://www.loom.com/embed/14bdae734ec54978a9f674e68f8a4d5c",
     thumbnail: "https://cdn.loom.com/sessions/thumbnails/14bdae734ec54978a9f674e68f8a4d5c-41798314cf609f39.jpg",
     duration: "16 min",
@@ -46,8 +46,8 @@ export default function VideoSection() {
             Programme Voix de Reine
           </h2>
           <p className="text-base text-white/60 max-w-2xl mx-auto">
-            Decouvrez des extraits de notre programme phare de reprogrammation mentale
-            et developpement personnel avec Coach Lady Wassa.
+            Découvrez des extraits de notre programme phare de reprogrammation mentale
+            et développement personnel avec Coach Lady Wassa.
           </p>
         </motion.div>
 

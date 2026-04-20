@@ -92,7 +92,7 @@ export default function ContactSection({ apiUrl }) {
             Des questions ? On se parle directement
           </h2>
           <p className="text-base text-[#4A4A4A]">
-            Je reponds rapidement et personnellement. Aucune automatisation ici.
+            Je réponds rapidement et personnellement. Aucune automatisation ici.
           </p>
         </motion.div>
 

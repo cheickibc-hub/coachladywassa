@@ -80,17 +80,17 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.6 }}
         >
           <span className="text-xs uppercase tracking-[0.2em] text-[#D4AF37] font-semibold">
-            Resultats Clients
+            Résultats Clients
           </span>
           <h2
             className="text-3xl sm:text-4xl font-bold text-[#0B3A5A] tracking-tight mt-3 mb-4"
             style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
           >
-            Ils ont transforme leur vie
+            Ils ont transformé leur vie
           </h2>
           <p className="text-base text-[#4A4A4A] max-w-2xl mx-auto">
-            Decouvrez les temoignages reels de personnes qui ont utilise les neurosciences
-            pour depasser leurs peurs et atteindre leurs objectifs.
+            Découvrez les témoignages réels de personnes qui ont utilisé les neurosciences
+            pour dépasser leurs peurs et atteindre leurs objectifs.
           </p>
         </motion.div>
 
@@ -201,7 +201,7 @@ export default function TestimonialsSection() {
             style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
           >
             <Volume2 className="inline-block w-5 h-5 mr-2 text-[#D4AF37]" />
-            Temoignages Audio
+            Témoignages Audio
           </h3>
           <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
             {AUDIO_TESTIMONIALS.map((audio, i) => (

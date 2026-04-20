@@ -2,30 +2,30 @@ import { motion } from "framer-motion";
 import { Check, Brain, Heart, Zap } from "lucide-react";
 
 const CREDENTIALS = [
-  "MasterCoach ICI certifie",
+  "MasterCoach ICI certifié",
   "Life & Corporate Coach",
   "Cabinet Mindset Coaching",
-  "Auteure du livre \"L'art de faire face a ses peurs\"",
-  "100+ clients transformes",
-  "Creatrice du programme \"Voix de Reine\"",
+  "Auteure du livre \"L'art de faire face à ses peurs\"",
+  "100+ clients transformés",
+  "Créatrice du programme \"Voix de Reine\"",
   "Passages TV sur RTB (Journal 13h)",
 ];
 
 const PILLARS = [
   {
     icon: Brain,
-    title: "Neuroplasticite",
-    desc: "Votre cerveau peut se reprogrammer a tout age. Nous utilisons cette capacite pour creer de nouveaux chemins neuraux.",
+    title: "Neuroplasticité",
+    desc: "Votre cerveau peut se reprogrammer à tout âge. Nous utilisons cette capacité pour créer de nouveaux chemins neuraux.",
   },
   {
     icon: Heart,
-    title: "Regulation Emotionnelle",
-    desc: "Comprendre et maitriser vos neurotransmetteurs : dopamine, serotonine, cortisol pour une vie equilibree.",
+    title: "Régulation Émotionnelle",
+    desc: "Comprendre et maîtriser vos neurotransmetteurs : dopamine, sérotonine, cortisol pour une vie équilibrée.",
   },
   {
     icon: Zap,
     title: "Ancrage Neural",
-    desc: "Creer de nouvelles connexions cerebrales durables. Les comportements deviennent des habitudes positives.",
+    desc: "Créer de nouvelles connexions cérébrales durables. Les comportements deviennent des habitudes positives.",
   },
 ];
 
@@ -76,21 +76,21 @@ export default function AboutSection() {
               className="text-3xl sm:text-4xl font-bold text-[#0B3A5A] tracking-tight mt-3 mb-6"
               style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
             >
-              De la peur paralysante a coach en neurosciences
+              De la peur paralysante à coach en neurosciences
             </h2>
             <div className="space-y-4 text-[#4A4A4A] leading-relaxed">
               <p>
-                Il y a 10 ans, j'avais une peur bleue de parler en public. A l'universite,
-                presenter un projet devant la classe me paralysait completement.
+                Il y a 10 ans, j'avais une peur bleue de parler en public. À l'université,
+                présenter un projet devant la classe me paralysait complètement.
               </p>
               <p>
-                Puis j'ai decouvert les neurosciences et compris comment mon cerveau
-                fonctionnait. J'ai appris que la peur n'etait pas une faiblesse, mais une
+                Puis j'ai découvert les neurosciences et compris comment mon cerveau
+                fonctionnait. J'ai appris que la peur n'était pas une faiblesse, mais une
                 information de mon amygdale.
               </p>
               <p>
-                J'ai applique des techniques basees sur la neuroplasticite et ma vie a change.
-                Aujourd'hui, j'aide plus de 100 clients a transformer leur relation au stress et a la peur.
+                J'ai appliqué des techniques basées sur la neuroplasticité et ma vie a changé.
+                Aujourd'hui, j'aide plus de 100 clients à transformer leur relation au stress et à la peur.
               </p>
             </div>
 
@@ -119,12 +119,12 @@ export default function AboutSection() {
               Ma Mission
             </p>
             <p className="text-lg md:text-xl font-medium leading-relaxed opacity-90">
-              Vous accompagner a reveler le meilleur de votre personnalite afin de batir
-              une vie epanouie, de qualite et surtout alignee, en exploitant pleinement
-              les incroyables potentiels caches dans votre cerveau.
+              Vous accompagner à révéler le meilleur de votre personnalité afin de bâtir
+              une vie épanouie, de qualité et surtout alignée, en exploitant pleinement
+              les incroyables potentiels cachés dans votre cerveau.
             </p>
             <p className="text-sm text-[#D4AF37] mt-4 italic">
-              "Votre cerveau, votre meilleur allie : transformez votre mindset, transformez votre vie."
+              "Votre cerveau, votre meilleur allié : transformez votre mindset, transformez votre vie."
             </p>
           </div>
         </motion.div>

@@ -9,30 +9,30 @@ const FORMATIONS = [
     tier: "STARTER",
     name: "Peur 101 Starter",
     duration: "2 semaines",
-    format: "5 videos + Workbook PDF",
-    audience: "Decouverte, tous niveaux",
+    format: "5 vidéos + Workbook PDF",
+    audience: "Découverte, tous niveaux",
     badge: null,
     features: [
-      "Comprendre l'amygdale et son role",
-      "3 techniques neurosciences validees",
+      "Comprendre l'amygdale et son rôle",
+      "3 techniques neurosciences validées",
       "Exercices quotidiens 10 min",
-      "Acces a vie aux videos",
+      "Accès à vie aux vidéos",
     ],
     isPremium: false,
     isPopular: false,
   },
   {
     tier: "STANDARD",
-    name: "Transformation Cerebrale",
+    name: "Transformation Cérébrale",
     duration: "4 semaines",
-    format: "15 videos + Groupe coaching",
+    format: "15 vidéos + Groupe coaching",
     audience: "Femmes actives, premiers acheteurs",
     badge: "PLUS POPULAIRE",
     features: [
-      "Framework complet 7 etapes",
+      "Framework complet 7 étapes",
       "Groupe coaching en live (2h/mois)",
       "Certification de participation",
-      "Communaute Facebook exclusive",
+      "Communauté Facebook exclusive",
       "Email support 1-to-1 (30j)",
     ],
     isPremium: false,
@@ -40,17 +40,17 @@ const FORMATIONS = [
   },
   {
     tier: "PREMIUM",
-    name: "Maitre Ton Cerveau",
+    name: "Maître De Ton Cerveau",
     duration: "8 semaines",
-    format: "20 videos + 2 seances 1-to-1",
-    audience: "Dirigeants, engagement serieux",
-    badge: "POUR LES SERIEUX",
+    format: "20 vidéos + 2 séances 1-to-1",
+    audience: "Dirigeants, engagement sérieux",
+    badge: "POUR LES SÉRIEUX",
     features: [
       "Tout du Standard + personnalisation",
-      "2 seances 1-to-1 audit cerebral",
-      "Plan d'action personnalise",
+      "2 séances 1-to-1 audit cérébral",
+      "Plan d'action personnalisé",
       "Support VIP email/WhatsApp",
-      "Acces annee a mises a jour",
+      "Accès à l'année",
     ],
     isPremium: false,
     isPopular: false,
@@ -59,16 +59,16 @@ const FORMATIONS = [
     tier: "VIP",
     name: "Transformation Annuelle",
     duration: "12 mois",
-    format: "Tous videos + Coaching illimite",
+    format: "Tous vidéos + Coaching illimité",
     audience: "Leaders, vision long-terme",
-    badge: "ELITE",
+    badge: "ÉLITE",
     features: [
-      "Acces formation complete 12 mois",
+      "Accès formation complète 12 mois",
       "Coaching 1-to-1 mensuel (60 min)",
-      "Acces a tous nouveaux contenus",
+      "Accès à tous nouveaux contenus",
       "Mastermind mensuel (network VIP)",
-      "Priorite support direct WhatsApp",
-      "Reseau d'entrepreneurs transformes",
+      "Priorité support direct WhatsApp",
+      "Réseau d'entrepreneurs transformés",
     ],
     isPremium: true,
     isPopular: false,
@@ -101,7 +101,7 @@ export default function FormationsSection() {
             Choisissez votre transformation
           </h2>
           <p className="text-base text-[#4A4A4A] max-w-2xl mx-auto">
-            4 programmes adaptes a votre niveau et vos objectifs. Garantie 30 jours 100% remboursee.
+            4 programmes adaptés à votre niveau et vos objectifs. Garantie 30 jours 100% remboursée.
           </p>
         </motion.div>
 
@@ -136,7 +136,7 @@ export default function FormationsSection() {
                 </span>
               )}
 
-              <span className={`text-xs uppercase tracking-[0.15em] font-semibold mb-2 ${f.isPremium ? "text-[#D4AF37]" : "text-[#D4AF37]"}`}>
+              <span className="text-xs uppercase tracking-[0.15em] font-semibold mb-2 text-[#D4AF37]">
                 {f.tier}
               </span>
 
@@ -164,7 +164,7 @@ export default function FormationsSection() {
               </div>
 
               <a
-                href={`${WHATSAPP_BASE}Bonjour Coach, je suis interesse(e) par la formation ${f.name}. Pouvez-vous me donner plus d'informations ?`}
+                href={`${WHATSAPP_BASE}Bonjour Coach, je suis intéressé(e) par la formation ${f.name}. Pouvez-vous me donner plus d'informations ?`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -193,7 +193,7 @@ export default function FormationsSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          Garantie 30 jours 100% remboursee. Aucune question posee.
+          Garantie 30 jours 100% remboursée. Aucune question posée.
         </motion.p>
       </div>
     </section>

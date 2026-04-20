@@ -114,7 +114,7 @@ export default function BlogSection() {
         </div>
 
         {filtered.length === 0 && (
-          <p className="text-center text-[#4A4A4A] py-12">Aucun article dans cette categorie pour le moment.</p>
+          <p className="text-center text-[#4A4A4A] py-12">Aucun article dans cette catégorie pour le moment.</p>
         )}
 
         <motion.div
@@ -129,7 +129,7 @@ export default function BlogSection() {
               variant="outline"
               className="border-[#0B3A5A] text-[#0B3A5A] hover:bg-[#0B3A5A] hover:text-white rounded-full px-8 py-5 font-semibold"
             >
-              Decouvrir votre profil emotionnel
+              Découvrir votre profil émotionnel
               <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </a>

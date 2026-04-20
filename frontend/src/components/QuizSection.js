@@ -205,10 +205,10 @@ export default function QuizSection({ apiUrl }) {
             className="text-3xl sm:text-4xl font-bold text-[#0B3A5A] tracking-tight mt-3 mb-4"
             style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
           >
-            Quel est votre profil emotionnel ?
+            Quel est votre profil émotionnel ?
           </h2>
           <p className="text-base text-[#4A4A4A]">
-            8 questions &bull; 2 minutes &bull; Resultat personnalise gratuit
+            8 questions &bull; 2 minutes &bull; Résultat personnalisé gratuit
           </p>
         </motion.div>
 
@@ -233,11 +233,11 @@ export default function QuizSection({ apiUrl }) {
                 <Brain className="w-10 h-10 text-[#0B3A5A]" />
               </div>
               <h3 className="text-xl font-bold text-[#0B3A5A] mb-3" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
-                Decouvrez comment votre cerveau gere le stress, la peur et les objectifs
+                Découvrez comment votre cerveau gère le stress, la peur et les objectifs
               </h3>
               <p className="text-sm text-[#4A4A4A] mb-8 max-w-md mx-auto">
-                Repondez a 8 questions simples et recevez votre profil emotionnel personnalise
-                avec des techniques neurosciences adaptees a vous.
+                Répondez à 8 questions simples et recevez votre profil émotionnel personnalisé
+                avec des techniques neurosciences adaptées à vous.
               </p>
               <Button
                 data-testid="quiz-start-btn"

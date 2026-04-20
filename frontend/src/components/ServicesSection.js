@@ -8,32 +8,32 @@ const SERVICES = [
   {
     icon: Brain,
     title: "Connaissance de soi, confiance et estime de soi",
-    desc: "Revelez le meilleur de votre personnalite en comprenant les mecanismes cerebraux qui influencent votre confiance.",
+    desc: "Révélez le meilleur de votre personnalité en comprenant les mécanismes cérébraux qui influencent votre confiance.",
   },
   {
     icon: Heart,
-    title: "Gestion du stress et des emotions",
-    desc: "Apprenez a reguler vos emotions et maitriser votre stress grace aux techniques de neurosciences appliquees.",
+    title: "Gestion du stress et des émotions",
+    desc: "Apprenez à réguler vos émotions et maîtriser votre stress grâce aux techniques de neurosciences appliquées.",
   },
   {
     icon: Lightbulb,
     title: "Reprogrammation mentale",
-    desc: "Transformez vos schemas de pensee limitants en nouvelles connexions cerebrales positives et durables.",
+    desc: "Transformez vos schémas de pensée limitants en nouvelles connexions cérébrales positives et durables.",
   },
   {
     icon: Briefcase,
     title: "Transition de vie et reconversion professionnelle",
-    desc: "Accompagnement personnalise pour naviguer les changements de vie et les transitions de carriere.",
+    desc: "Accompagnement personnalisé pour naviguer les changements de vie et les transitions de carrière.",
   },
   {
     icon: Users,
     title: "Team Building et performances organisationnelles",
-    desc: "Gestion du changement organisationnel, coaching d'equipe et performances collectives pour les entreprises.",
+    desc: "Gestion du changement organisationnel, coaching d'équipe et performances collectives pour les entreprises.",
   },
   {
     icon: BookOpen,
     title: "Coaching scolaire, parents et enseignants",
-    desc: "Neurosciences de l'education et motivation pour accompagner etudiants, parents et enseignants.",
+    desc: "Neurosciences de l'éducation et motivation pour accompagner étudiants, parents et enseignants.",
   },
 ];
 
@@ -70,11 +70,10 @@ export default function ServicesSection() {
             Cabinet Mindset Coaching
           </h2>
           <p className="text-base text-[#4A4A4A] max-w-2xl mx-auto">
-            Life &amp; Corporate Coach &bull; MasterCoach ICI certifie
+            Life &amp; Corporate Coach &bull; MasterCoach ICI certifié
           </p>
         </motion.div>
 
-        {/* Mission */}
         <motion.div
           className="bg-[#0B3A5A] rounded-3xl px-8 py-10 md:px-14 md:py-12 text-white max-w-4xl mx-auto mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -86,16 +85,15 @@ export default function ServicesSection() {
             Notre Mission
           </p>
           <p className="text-base md:text-lg leading-relaxed opacity-90">
-            Vous accompagner a reveler le meilleur de votre personnalite afin de batir
-            une vie epanouie, de qualite et surtout alignee, en exploitant pleinement
-            les incroyables potentiels caches dans votre cerveau.
+            Vous accompagner à révéler le meilleur de votre personnalité afin de bâtir
+            une vie épanouie, de qualité et surtout alignée, en exploitant pleinement
+            les incroyables potentiels cachés dans votre cerveau.
           </p>
           <p className="text-sm text-[#D4AF37] mt-4 italic font-medium">
-            "Votre cerveau, votre meilleur allie : transformez votre mindset, transformez votre vie."
+            "Votre cerveau, votre meilleur allié : transformez votre mindset, transformez votre vie."
           </p>
         </motion.div>
 
-        {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {SERVICES.map((service, i) => {
             const Icon = service.icon;
@@ -123,7 +121,6 @@ export default function ServicesSection() {
           })}
         </div>
 
-        {/* More Services */}
         <motion.div
           className="bg-[#FAF9F6] rounded-2xl p-8 max-w-2xl mx-auto text-center mb-10"
           initial={{ opacity: 0, y: 20 }}
@@ -131,7 +128,7 @@ export default function ServicesSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
         >
-          <p className="text-sm font-semibold text-[#0B3A5A] mb-4">Egalement disponible :</p>
+          <p className="text-sm font-semibold text-[#0B3A5A] mb-4">Également disponible :</p>
           <div className="flex flex-wrap justify-center gap-3">
             {MORE_SERVICES.map((s, i) => (
               <span key={i} className="bg-white text-sm text-[#4A4A4A] px-4 py-2 rounded-full border border-black/5">
@@ -141,14 +138,12 @@ export default function ServicesSection() {
           </div>
         </motion.div>
 
-        {/* CTA */}
         <motion.div
           className="text-center mt-12"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          {/* Services Flyer */}
           <div className="max-w-md mx-auto mb-10 rounded-2xl overflow-hidden shadow-lg border border-black/5">
             <img
               src="/doc-img-9.jpg"

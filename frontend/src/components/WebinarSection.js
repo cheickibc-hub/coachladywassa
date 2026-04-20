@@ -7,11 +7,11 @@ import { Label } from "../components/ui/label";
 import axios from "axios";
 
 const BENEFITS = [
-  "Comprendre exactement comment votre cerveau cree la peur",
-  "Framework 3 etapes que vous utiliserez immediatement",
-  "Technique neuro-reprogrammation scientifique validee",
-  "Reponses a vos questions en direct",
-  "Surprise bonus : offre speciale webinaire (live reveal)",
+  "Comprendre exactement comment votre cerveau crée la peur",
+  "Framework 3 étapes que vous utiliserez immédiatement",
+  "Technique neuro-reprogrammation scientifique validée",
+  "Réponses à vos questions en direct",
+  "Surprise bonus : offre spéciale webinaire (live reveal)",
 ];
 
 export default function WebinarSection({ apiUrl }) {
@@ -55,7 +55,7 @@ export default function WebinarSection({ apiUrl }) {
               className="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-3 mb-4"
               style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
             >
-              Maitrisez votre cerveau en 45 minutes
+              Maîtrisez votre cerveau en 45 minutes
             </h2>
             <p className="text-base text-white/70 mb-2">
               La technique neurosciences que j'utilise pour transformer la peur en pouvoir.
@@ -99,7 +99,7 @@ export default function WebinarSection({ apiUrl }) {
                   className="text-xl font-bold text-[#0B3A5A] mb-6"
                   style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                 >
-                  Reservez votre place gratuite
+                  Réservez votre place gratuite
                 </h3>
                 <div className="space-y-4">
                   <div>

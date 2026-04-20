@@ -37,11 +37,11 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-base md:text-lg text-[#4A4A4A] max-w-xl mb-8 leading-relaxed">
-              J'aide les dirigeants, etudiants et femmes actives a utiliser leur cerveau
-              comme un veritable levier de transformation pour atteindre leurs objectifs
+              J'aide les dirigeants, étudiants et femmes actives à utiliser leur cerveau
+              comme un véritable levier de transformation pour atteindre leurs objectifs
               personnels et professionnels, sans stress ni blocages.
               <span className="block mt-2 text-sm text-[#4A4A4A]/70">
-                100+ clients transformes &bull; 12,000+ abonnes &bull; Ouagadougou, Burkina Faso
+                100+ clients transformés &bull; 12,000+ abonnés &bull; Ouagadougou, Burkina Faso
               </span>
             </p>
 
@@ -59,10 +59,10 @@ export default function HeroSection() {
                 <Button
                   data-testid="hero-cta-booking"
                   variant="outline"
-                  className="border-[#0B3A5A] text-[#0B3A5A] hover:bg-[#0B3A5A] hover:text-white rounded-full px-8 py-6 text-base font-semibold"
+                  className="border-[#0B3A5A] text-[#0B3A5A] hover:bg-[#0B3A5A] hover:text-white rounded-full px-6 py-6 text-sm font-semibold"
                 >
                   <Calendar className="mr-2 w-4 h-4" />
-                  Seance Decouverte
+                  Séance Découverte
                 </Button>
               </a>
             </div>
@@ -106,16 +106,16 @@ export default function HeroSection() {
               />
               {/* Floating badge */}
               <div className="absolute -bottom-4 -left-4 glass-card rounded-2xl px-5 py-3 animate-float">
-                <p className="text-sm font-bold text-[#0B3A5A]">MasterCoach ICI certifie</p>
+                <p className="text-sm font-bold text-[#0B3A5A]">MasterCoach ICI certifié</p>
                 <p className="text-xs text-[#4A4A4A]">Auteure &amp; Life Coach</p>
               </div>
               {/* RTB badge */}
               <div className="absolute -top-2 -right-2 bg-[#0B3A5A] text-white rounded-full px-4 py-2 text-xs font-bold shadow-lg">
-                Vu sur RTB TV
+                Vu à la RTB TV
               </div>
               {/* Facebook badge */}
               <div className="absolute top-16 -right-2 bg-[#1877F2] text-white rounded-full px-4 py-2 text-xs font-bold shadow-lg">
-                12K+ abonnes
+                12K+ abonnés
               </div>
             </div>
           </motion.div>

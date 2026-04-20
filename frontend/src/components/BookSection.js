@@ -8,7 +8,7 @@ const FORMATS = [
   {
     icon: BookOpen,
     name: "Ebook / PDF",
-    detail: "Format digital, livraison instantanee",
+    detail: "Format digital, livraison instantanée",
     cta: "Commander",
   },
   {
@@ -86,12 +86,12 @@ export default function BookSection() {
               className="text-3xl sm:text-4xl font-bold text-[#0B3A5A] tracking-tight mt-3 mb-4"
               style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
             >
-              L'art de faire face a ses peurs
+              L'art de faire face à ses peurs
             </h2>
             <p className="text-base text-[#4A4A4A] leading-relaxed mb-4">
               La peur n'est pas votre ennemie, c'est une information de votre cerveau. Dans ce livre,
-              je vous montre comment comprendre scientifiquement d'ou vient votre peur, utiliser les techniques
-              de neuroplasticite pour la reprogrammer, et creer un plan d'action personnalise.
+              je vous montre comment comprendre scientifiquement d'où vient votre peur, utiliser les techniques
+              de neuroplasticité pour la reprogrammer, et créer un plan d'action personnalisé.
             </p>
             <p className="text-sm text-[#D4AF37] font-semibold mb-6">
               3,500 exemplaires vendus &bull; 4.8/5 avis lecteurs

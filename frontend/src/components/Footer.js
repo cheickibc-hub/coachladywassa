@@ -51,7 +51,7 @@ export default function Footer() {
               className="h-12 w-auto mb-4"
             />
             <p className="text-sm text-white/60 leading-relaxed mb-4">
-              MasterCoach ICI certifie. Life &amp; Corporate Coach. Aide dirigeants, femmes actives et etudiants a depasser leurs peurs.
+              MasterCoach ICI certifié. Life &amp; Corporate Coach. Aide dirigeants, femmes actives et étudiants à dépasser leurs peurs.
             </p>
             <p className="text-sm text-white/60">
               Ouagadougou, Burkina Faso
