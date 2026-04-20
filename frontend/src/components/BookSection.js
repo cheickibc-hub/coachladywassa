@@ -146,8 +146,22 @@ export default function BookSection() {
           </motion.div>
         </div>
 
-        {/* Book Reviews */}
-        <div className="mt-16 grid md:grid-cols-3 gap-6">
+        {/* Book Reviews + Real Photo */}
+        <div className="mt-16 grid md:grid-cols-4 gap-6">
+          <motion.div
+            className="rounded-2xl overflow-hidden shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+          >
+            <img
+              src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/w90xv2a4_image.png"
+              alt="Coach Lady Wassa presentant son livre"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </motion.div>
           {BOOK_REVIEWS.map((r, i) => (
             <motion.div
               key={i}

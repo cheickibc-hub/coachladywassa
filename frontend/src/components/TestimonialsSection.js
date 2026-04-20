@@ -95,9 +95,9 @@ export default function TestimonialsSection() {
         </motion.div>
 
         {/* WhatsApp Screenshots */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           <motion.div
-            className="testimonial-screenshot glass-card rounded-2xl p-4"
+            className="testimonial-screenshot glass-card rounded-2xl p-3"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -112,16 +112,76 @@ export default function TestimonialsSection() {
             />
           </motion.div>
           <motion.div
-            className="testimonial-screenshot glass-card rounded-2xl p-4"
+            className="testimonial-screenshot glass-card rounded-2xl p-3"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <img
+              data-testid="testimonial-screenshot-2"
+              src="https://customer-assets.emergentagent.com/job_be26550a-7109-49a1-b5f6-ce556eeedf7e/artifacts/87nwjs1w_WhatsApp%20Image%202026-04-16%20at%2010.06.37.jpeg"
+              alt="Temoignage WhatsApp Aminata Barry"
+              className="w-full rounded-xl"
+              loading="lazy"
+            />
+          </motion.div>
+          <motion.div
+            className="testimonial-screenshot glass-card rounded-2xl p-3"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <img
+              data-testid="testimonial-screenshot-3"
+              src="/doc-img-1.jpg"
+              alt="Temoignage WhatsApp Awa Nacoul"
+              className="w-full rounded-xl"
+              loading="lazy"
+            />
+          </motion.div>
+          <motion.div
+            className="testimonial-screenshot glass-card rounded-2xl p-3"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.05 }}
+          >
+            <img
+              data-testid="testimonial-screenshot-4"
+              src="/doc-img-6.jpg"
+              alt="Temoignage WhatsApp Mlle Yogo Huguette"
+              className="w-full rounded-xl"
+              loading="lazy"
+            />
+          </motion.div>
+          <motion.div
+            className="testimonial-screenshot glass-card rounded-2xl p-3"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15 }}
           >
             <img
-              data-testid="testimonial-screenshot-2"
-              src="https://customer-assets.emergentagent.com/job_be26550a-7109-49a1-b5f6-ce556eeedf7e/artifacts/87nwjs1w_WhatsApp%20Image%202026-04-16%20at%2010.06.37.jpeg"
-              alt="Temoignage WhatsApp Aminata Barry"
+              data-testid="testimonial-screenshot-5"
+              src="/doc-img-7.jpg"
+              alt="Temoignage WhatsApp - Video Loom"
+              className="w-full rounded-xl"
+              loading="lazy"
+            />
+          </motion.div>
+          <motion.div
+            className="testimonial-screenshot glass-card rounded-2xl p-3"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+          >
+            <img
+              data-testid="testimonial-screenshot-6"
+              src="/doc-img-8.jpg"
+              alt="Temoignage WhatsApp Faridatou"
               className="w-full rounded-xl"
               loading="lazy"
             />
@@ -191,7 +251,7 @@ export default function TestimonialsSection() {
 
         {/* Event Photos */}
         <motion.div
-          className="mt-16 grid md:grid-cols-2 gap-8"
+          className="mt-16 grid md:grid-cols-3 gap-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -199,9 +259,21 @@ export default function TestimonialsSection() {
         >
           <div className="rounded-2xl overflow-hidden shadow-lg">
             <img
+              src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/i2zoxyj6_image.png"
+              alt="Participantes du programme Voix de Reine"
+              className="w-full object-cover aspect-square"
+              loading="lazy"
+            />
+            <div className="bg-white p-4">
+              <p className="text-sm font-bold text-[#0B3A5A]">Programme Voix de Reine</p>
+              <p className="text-xs text-[#4A4A4A]">Coaching collectif avec les participantes</p>
+            </div>
+          </div>
+          <div className="rounded-2xl overflow-hidden shadow-lg">
+            <img
               src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/ci1jbbzz_image.png"
               alt="Coach Lady Wassa - Ceremonie remise de cheque"
-              className="w-full object-cover aspect-[4/3]"
+              className="w-full object-cover aspect-square"
               loading="lazy"
             />
             <div className="bg-white p-4">
@@ -211,14 +283,14 @@ export default function TestimonialsSection() {
           </div>
           <div className="rounded-2xl overflow-hidden shadow-lg">
             <img
-              src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/w90xv2a4_image.png"
-              alt="Coach Lady Wassa avec leaders communautaires"
-              className="w-full object-cover aspect-[4/3]"
+              src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/zts5iwg8_image.png"
+              alt="Coach Lady Wassa presentant son livre"
+              className="w-full object-cover aspect-square"
               loading="lazy"
             />
             <div className="bg-white p-4">
-              <p className="text-sm font-bold text-[#0B3A5A]">Impact communautaire</p>
-              <p className="text-xs text-[#4A4A4A]">Lady Wassa presentant son livre aux leaders de la communaute</p>
+              <p className="text-sm font-bold text-[#0B3A5A]">Presentation du livre</p>
+              <p className="text-xs text-[#4A4A4A]">"L'art de faire face a ses peurs" - Evenement officiel</p>
             </div>
           </div>
         </motion.div>

@@ -143,11 +143,20 @@ export default function ServicesSection() {
 
         {/* CTA */}
         <motion.div
-          className="text-center"
+          className="text-center mt-12"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
+          {/* Services Flyer */}
+          <div className="max-w-md mx-auto mb-10 rounded-2xl overflow-hidden shadow-lg border border-black/5">
+            <img
+              src="/doc-img-9.jpg"
+              alt="Nos Services - Cabinet Mindset Coaching"
+              className="w-full"
+              loading="lazy"
+            />
+          </div>
           <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
             <Button
               data-testid="services-cta"

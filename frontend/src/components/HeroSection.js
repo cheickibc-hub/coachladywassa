@@ -100,7 +100,7 @@ export default function HeroSection() {
             <div className="relative">
               <div className="absolute -top-4 -left-4 w-full h-full bg-[#D4AF37]/10 rounded-3xl" />
               <img
-                src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/axrf2auk_image.png"
+                src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/orkoyz8r_image.png"
                 alt="Coach Lady Wassa - Coach Neurosciences Ouagadougou"
                 className="relative w-full rounded-3xl object-cover object-top aspect-[4/5] shadow-xl"
               />
