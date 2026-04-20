@@ -49,26 +49,12 @@ export default function BookSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="book-3d">
-              <div className="book-cover w-64 md:w-72 bg-[#0B3A5A] rounded-lg p-8 text-white relative">
-                <div className="absolute top-0 left-0 w-full h-1 bg-[#D4AF37]" />
-                <div className="h-96 flex flex-col justify-between">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-[#D4AF37] mb-3">Coach Lady Wassa</p>
-                    <h3
-                      className="text-2xl font-bold leading-tight"
-                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                    >
-                      L'art de faire face a ses peurs
-                    </h3>
-                    <p className="text-xs text-white/60 mt-3">La methode neurosciences pour transformer la peur en pouvoir</p>
-                  </div>
-                  <div>
-                    <div className="w-12 h-0.5 bg-[#D4AF37] mb-3" />
-                    <p className="text-[10px] text-white/40 uppercase tracking-wider">Neurosciences Appliquees</p>
-                  </div>
-                </div>
-              </div>
+            <div className="relative">
+              <img
+                src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/blw908x8_image.png"
+                alt="L'art de faire face à ses peurs - Coach Lady Wassa"
+                className="w-64 md:w-72 rounded-lg shadow-2xl"
+              />
             </div>
           </motion.div>
 

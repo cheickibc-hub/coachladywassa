@@ -22,6 +22,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import MemberDashboard from "./pages/MemberDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
+import BlogArticlePage from "./pages/BlogArticlePage";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -60,6 +61,7 @@ function App() {
           <Route path="/inscription" element={<RegisterPage />} />
           <Route path="/membre" element={<MemberDashboard />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/blog/:slug" element={<BlogArticlePage />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

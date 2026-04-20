@@ -188,3 +188,23 @@ section {
 .testimonial-screenshot:hover {
   transform: scale(1.02);
 }
+
+/* Blog article content */
+.prose h2 {
+  color: #0B3A5A;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.prose p {
+  margin-bottom: 1rem;
+  color: #4A4A4A;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+.prose strong {
+  color: #0B3A5A;
+  font-weight: 600;
+}

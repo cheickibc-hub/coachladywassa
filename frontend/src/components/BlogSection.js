@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Clock, ArrowRight } from "lucide-react";
 import { Button } from "../components/ui/button";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -76,15 +77,15 @@ export default function BlogSection() {
         {/* Articles Grid */}
         <div className="grid md:grid-cols-3 gap-8">
           {filtered.map((article, i) => (
-            <motion.article
-              key={article.id}
-              data-testid={`blog-article-${article.id}`}
-              className="bg-white rounded-2xl overflow-hidden border border-black/5 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-            >
+            <Link to={`/blog/${article.slug}`} key={article.id}>
+              <motion.article
+                data-testid={`blog-article-${article.id}`}
+                className="bg-white rounded-2xl overflow-hidden border border-black/5 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group h-full"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+              >
               <div className="aspect-[16/10] overflow-hidden">
                 <img
                   src={article.image_url}
@@ -110,6 +111,7 @@ export default function BlogSection() {
                 </p>
               </div>
             </motion.article>
+            </Link>
           ))}
         </div>
 
