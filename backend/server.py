@@ -71,6 +71,7 @@ def set_auth_cookies(response: Response, access_token: str, refresh_token: str):
 app = FastAPI()
 api_router = APIRouter(prefix="/api")
 auth_router = APIRouter(prefix="/api/auth")
+admin_router = APIRouter(prefix="/api/admin")
 
 
 # ---- Models ----
@@ -105,6 +106,16 @@ class RegisterInput(BaseModel):
 class LoginInput(BaseModel):
     email: str
     password: str
+
+class EnrollInput(BaseModel):
+    formation_id: str
+
+
+async def require_admin(request: Request) -> dict:
+    user = await get_current_user(request)
+    if user.get("role") != "admin":
+        raise HTTPException(status_code=403, detail="Acces reserve aux administrateurs")
+    return user
 
 
 # ---- Blog articles ----
@@ -179,6 +190,16 @@ async def register(input_data: RegisterInput, response: Response):
     }
     result = await db.users.insert_one(user_doc)
     user_id = str(result.inserted_id)
+    # Create WhatsApp notification for admin
+    await db.notifications.insert_one({
+        "type": "new_member",
+        "message": f"Nouveau membre inscrit : {input_data.name} ({email})",
+        "user_name": input_data.name,
+        "user_email": email,
+        "whatsapp_url": f"https://wa.me/22657575701?text=Bienvenue {input_data.name} ! Merci de vous etre inscrit(e) sur notre plateforme Cabinet Mindset Coaching. Comment puis-je vous aider ?",
+        "read": False,
+        "created_at": datetime.now(timezone.utc).isoformat()
+    })
     access_token = create_access_token(user_id, email)
     refresh_token = create_refresh_token(user_id)
     set_auth_cookies(response, access_token, refresh_token)
@@ -326,7 +347,112 @@ async def get_member_formations(request: Request):
     return result
 
 
+# ---- Admin endpoints ----
+@admin_router.get("/stats")
+async def admin_stats(request: Request):
+    await require_admin(request)
+    members = await db.users.count_documents({"role": "member"})
+    leads = await db.leads.count_documents({})
+    webinar_regs = await db.webinar_registrations.count_documents({})
+    contacts = await db.contact_messages.count_documents({})
+    newsletters = await db.newsletter_subscriptions.count_documents({})
+    unread_notifs = await db.notifications.count_documents({"read": False})
+    return {
+        "members": members,
+        "leads": leads,
+        "webinar_registrations": webinar_regs,
+        "contact_messages": contacts,
+        "newsletters": newsletters,
+        "unread_notifications": unread_notifs,
+    }
+
+@admin_router.get("/members")
+async def admin_list_members(request: Request):
+    await require_admin(request)
+    cursor = db.users.find({"role": "member"}, {"password_hash": 0}).sort("created_at", -1)
+    members = []
+    async for user in cursor:
+        user["_id"] = str(user["_id"])
+        members.append(user)
+    return members
+
+@admin_router.put("/members/{user_id}/enroll")
+async def admin_enroll_member(user_id: str, input_data: EnrollInput, request: Request):
+    await require_admin(request)
+    result = await db.users.update_one(
+        {"_id": ObjectId(user_id)},
+        {"$addToSet": {"enrolled_formations": input_data.formation_id}}
+    )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Membre non trouve")
+    user = await db.users.find_one({"_id": ObjectId(user_id)}, {"password_hash": 0})
+    await db.notifications.insert_one({
+        "type": "enrollment",
+        "message": f"{user.get('name', '')} inscrit(e) a la formation {input_data.formation_id}",
+        "user_name": user.get("name", ""),
+        "user_email": user.get("email", ""),
+        "whatsapp_url": f"https://wa.me/22657575701?text=Bonjour {user.get('name', '')} ! Votre inscription a la formation {input_data.formation_id} est confirmee. Vous pouvez maintenant acceder a vos cours dans l'espace membre.",
+        "read": False,
+        "created_at": datetime.now(timezone.utc).isoformat()
+    })
+    return {"message": "Membre inscrit a la formation", "enrolled_formations": user.get("enrolled_formations", [])}
+
+@admin_router.put("/members/{user_id}/unenroll")
+async def admin_unenroll_member(user_id: str, input_data: EnrollInput, request: Request):
+    await require_admin(request)
+    result = await db.users.update_one(
+        {"_id": ObjectId(user_id)},
+        {"$pull": {"enrolled_formations": input_data.formation_id}}
+    )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Membre non trouve")
+    return {"message": "Membre desinscrit de la formation"}
+
+@admin_router.get("/leads")
+async def admin_list_leads(request: Request):
+    await require_admin(request)
+    cursor = db.leads.find({}, {"_id": 0}).sort("created_at", -1)
+    leads = []
+    async for lead in cursor:
+        leads.append(lead)
+    return leads
+
+@admin_router.get("/webinar-registrations")
+async def admin_list_webinar_regs(request: Request):
+    await require_admin(request)
+    cursor = db.webinar_registrations.find({}, {"_id": 0}).sort("created_at", -1)
+    regs = []
+    async for reg in cursor:
+        regs.append(reg)
+    return regs
+
+@admin_router.get("/contacts")
+async def admin_list_contacts(request: Request):
+    await require_admin(request)
+    cursor = db.contact_messages.find({}, {"_id": 0}).sort("created_at", -1)
+    msgs = []
+    async for msg in cursor:
+        msgs.append(msg)
+    return msgs
+
+@admin_router.get("/notifications")
+async def admin_list_notifications(request: Request):
+    await require_admin(request)
+    cursor = db.notifications.find({}, {"_id": 0}).sort("created_at", -1).limit(50)
+    notifs = []
+    async for n in cursor:
+        notifs.append(n)
+    return notifs
+
+@admin_router.put("/notifications/read-all")
+async def admin_mark_notifications_read(request: Request):
+    await require_admin(request)
+    await db.notifications.update_many({"read": False}, {"$set": {"read": True}})
+    return {"message": "Toutes les notifications marquees comme lues"}
+
+
 app.include_router(auth_router)
+app.include_router(admin_router)
 app.include_router(api_router)
 
 app.add_middleware(
