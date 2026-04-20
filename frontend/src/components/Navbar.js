@@ -5,12 +5,12 @@ import { Button } from "../components/ui/button";
 const NAV_LINKS = [
   { label: "Accueil", href: "#hero" },
   { label: "A propos", href: "#about" },
+  { label: "Videos", href: "#videos" },
   { label: "Services", href: "#services" },
   { label: "Formations", href: "#formations" },
-  { label: "Quiz Gratuit", href: "#quiz" },
+  { label: "Quiz", href: "#quiz" },
   { label: "Webinaire", href: "#webinar" },
   { label: "Livre", href: "#book" },
-  { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -37,9 +37,11 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="#hero" data-testid="nav-logo" className="flex items-center gap-2">
-            <span className="text-xl md:text-2xl font-bold text-[#0B3A5A]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
-              Lady Wassa
-            </span>
+            <img
+              src="/logo-mindset-coaching.jpg"
+              alt="Cabinet Mindset Coaching"
+              className="h-10 md:h-12 w-auto"
+            />
           </a>
 
           {/* Desktop Nav */}

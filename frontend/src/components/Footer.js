@@ -45,14 +45,13 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <h3
-              className="text-xl font-bold text-white mb-3"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-            >
-              Lady Wassa
-            </h3>
+            <img
+              src="/logo-mindset-coaching.jpg"
+              alt="Cabinet Mindset Coaching"
+              className="h-12 w-auto mb-4"
+            />
             <p className="text-sm text-white/60 leading-relaxed mb-4">
-              Coach en neurosciences appliquees. Aide dirigeants, femmes actives et etudiants a depasser leurs peurs.
+              MasterCoach ICI certifie. Life &amp; Corporate Coach. Aide dirigeants, femmes actives et etudiants a depasser leurs peurs.
             </p>
             <p className="text-sm text-white/60">
               Ouagadougou, Burkina Faso

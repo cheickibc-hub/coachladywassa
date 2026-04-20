@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import ProblemSection from "./components/ProblemSection";
 import AboutSection from "./components/AboutSection";
+import VideoSection from "./components/VideoSection";
 import TestimonialsSection from "./components/TestimonialsSection";
 import FormationsSection from "./components/FormationsSection";
 import ServicesSection from "./components/ServicesSection";
@@ -27,6 +28,7 @@ const HomePage = () => {
       <HeroSection />
       <ProblemSection />
       <AboutSection />
+      <VideoSection />
       <TestimonialsSection />
       <ServicesSection />
       <FormationsSection />
