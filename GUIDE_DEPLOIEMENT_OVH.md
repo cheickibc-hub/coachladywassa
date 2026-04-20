@@ -87,7 +87,7 @@ pip install -r requirements.txt
 cat > .env << 'EOF'
 MONGO_URL="mongodb://localhost:27017"
 DB_NAME="ladywassa_production"
-CORS_ORIGINS="https://ladywassa.com,https://www.ladywassa.com"
+CORS_ORIGINS="https://coachladywassa.com,https://www.coachladywassa.com"
 JWT_SECRET="GENEREZ_UNE_CLE_SECRETE_ICI"
 ADMIN_EMAIL="admin@ladywassa.com"
 ADMIN_PASSWORD="VotreMotDePasseSecurise123!"
@@ -109,7 +109,7 @@ cd /var/www/ladywassa-frontend
 
 # Configurer les variables d'environnement
 cat > .env << 'EOF'
-REACT_APP_BACKEND_URL=https://ladywassa.com
+REACT_APP_BACKEND_URL=https://www.coachladywassa.com
 EOF
 
 # Installer les dépendances
@@ -124,7 +124,7 @@ yarn build
 cat > /etc/nginx/sites-available/ladywassa << 'EOF'
 server {
     listen 80;
-    server_name ladywassa.com www.ladywassa.com;
+    server_name coachladywassa.com www.coachladywassa.com;
 
     # Frontend (fichiers statiques)
     location / {
@@ -173,10 +173,11 @@ pm2 startup
 
 ### Étape 9 : Configurer le nom de domaine
 1. Dans votre espace client OVH, allez dans **Noms de domaine**
-2. Cliquez sur **ladywassa.com** > **Zone DNS**
+2. Cliquez sur **coachladywassa.com** > **Zone DNS**
 3. Ajoutez/modifiez les enregistrements :
    - **A** : `@` → `VOTRE_IP_VPS`
    - **A** : `www` → `VOTRE_IP_VPS`
+   - **CNAME** : `www` → `coachladywassa.com.` (si préféré)
 4. Attendez 24h pour la propagation DNS
 
 ### Étape 10 : Installer le certificat SSL (HTTPS gratuit)
@@ -185,7 +186,7 @@ pm2 startup
 apt install -y certbot python3-certbot-nginx
 
 # Obtenir le certificat SSL
-certbot --nginx -d ladywassa.com -d www.ladywassa.com
+certbot --nginx -d coachladywassa.com -d www.coachladywassa.com
 
 # Le renouvellement est automatique
 certbot renew --dry-run
@@ -243,9 +244,9 @@ systemctl status mongod       # État de MongoDB
 | Service | Coût |
 |---------|------|
 | VPS OVH Starter | 3.50 EUR/mois |
-| Nom de domaine .com | 10 EUR/an (0.83 EUR/mois) |
+| Nom de domaine coachladywassa.com | Déjà acheté |
 | Certificat SSL | Gratuit (Let's Encrypt) |
-| **Total** | **~4.33 EUR/mois** |
+| **Total** | **~3.50 EUR/mois** |
 
 ---
 
