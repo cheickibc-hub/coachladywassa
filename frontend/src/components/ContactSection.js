@@ -4,10 +4,8 @@ import { MessageCircle, Mail, Calendar, Send } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
+import { openWhatsApp } from "../utils/whatsapp";
 import axios from "axios";
-
-const WHATSAPP_LINK = "https://wa.me/22657575701?text=Bonjour%20Coach%20Lady%20Wassa%2C%20j'ai%20une%20question.";
-const BOOKING_LINK = "https://wa.me/22657575701?text=Bonjour%20Coach%2C%20je%20souhaite%20reserver%20une%20seance%20decouverte%20gratuite%20de%2030%20min.";
 
 const CONTACT_METHODS = [
   {
@@ -15,30 +13,30 @@ const CONTACT_METHODS = [
     title: "WhatsApp",
     subtitle: "Le plus rapide",
     detail: "+226 57 57 57 01",
-    response: "Reponse < 1h",
+    response: "Réponse < 1h",
     color: "#25D366",
-    link: WHATSAPP_LINK,
+    action: () => openWhatsApp("Bonjour Coach Lady Wassa, j'ai une question."),
     cta: "Ouvrir WhatsApp",
   },
   {
     icon: Mail,
     title: "Email",
-    subtitle: "Pour les details",
-    detail: "contact@ladywassa.com",
-    response: "Reponse < 24h",
+    subtitle: "Pour les détails",
+    detail: "contact@coachladywassa.com",
+    response: "Réponse < 24h",
     color: "#0B3A5A",
-    link: null,
+    action: null,
     cta: "Formulaire ci-dessous",
   },
   {
     icon: Calendar,
-    title: "Seance Decouverte",
+    title: "Séance Découverte",
     subtitle: "30 min gratuite",
     detail: "Lun-Jeu 15h-17h",
     response: "En direct avec Lady Wassa",
     color: "#D4AF37",
-    link: BOOKING_LINK,
-    cta: "Reserver",
+    action: () => openWhatsApp("Bonjour Coach, je souhaite réserver une séance découverte gratuite de 30 min."),
+    cta: "Réserver",
   },
 ];
 
@@ -119,8 +117,8 @@ export default function ContactSection({ apiUrl }) {
                 <p className="text-xs text-[#4A4A4A] mb-2">{method.subtitle}</p>
                 <p className="text-sm font-medium text-[#1A1A1A] mb-1">{method.detail}</p>
                 <p className="text-xs text-[#4A4A4A]/60 mb-4">{method.response}</p>
-                {method.link ? (
-                  <a href={method.link} target="_blank" rel="noopener noreferrer">
+                {method.action ? (
+                  <button onClick={method.action}>
                     <Button
                       data-testid={`contact-method-${i}`}
                       className="rounded-full text-sm px-6"
@@ -128,7 +126,7 @@ export default function ContactSection({ apiUrl }) {
                     >
                       {method.cta}
                     </Button>
-                  </a>
+                  </button>
                 ) : (
                   <a href="#contact-form">
                     <Button

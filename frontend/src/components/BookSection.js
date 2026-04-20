@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { BookOpen, Headphones, ShoppingBag, Star } from "lucide-react";
 import { Button } from "../components/ui/button";
-
-const WHATSAPP_BASE = "https://wa.me/22657575701?text=";
+import { openWhatsApp } from "../utils/whatsapp";
 
 const FORMATS = [
   {
@@ -104,10 +103,8 @@ export default function BookSection() {
                         <p className="text-xs text-[#4A4A4A]">{f.detail}</p>
                       </div>
                     </div>
-                    <a
-                      href={`${WHATSAPP_BASE}Bonjour, je souhaite commander le livre format "${f.name}".`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <button
+                      onClick={() => openWhatsApp(`Bonjour, je souhaite commander le livre format "${f.name}".`)}
                     >
                       <Button
                         data-testid={`book-cta-${i}`}
@@ -116,7 +113,7 @@ export default function BookSection() {
                       >
                         {f.cta}
                       </Button>
-                    </a>
+                    </button>
                   </div>
                 );
               })}

@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar } from "lucide-react";
 import { Button } from "../components/ui/button";
+import { openWhatsApp } from "../utils/whatsapp";
 
-const WHATSAPP_LINK = "https://wa.me/22657575701?text=Bonjour%20Coach%20Lady%20Wassa%2C%20je%20souhaite%20reserver%20une%20seance%20decouverte.";
+const WHATSAPP_MSG = "Bonjour Coach Lady Wassa, je souhaite réserver une séance découverte.";
 
 export default function HeroSection() {
   return (
@@ -55,7 +56,7 @@ export default function HeroSection() {
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </a>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+              <button onClick={() => openWhatsApp(WHATSAPP_MSG)}>
                 <Button
                   data-testid="hero-cta-booking"
                   variant="outline"
@@ -64,7 +65,7 @@ export default function HeroSection() {
                   <Calendar className="mr-2 w-4 h-4" />
                   Séance Découverte
                 </Button>
-              </a>
+              </button>
             </div>
 
             {/* Trust indicators */}

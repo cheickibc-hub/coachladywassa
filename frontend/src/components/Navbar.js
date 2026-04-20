@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "../components/ui/button";
+import { openWhatsApp } from "../utils/whatsapp";
 
 const NAV_LINKS = [
   { label: "Accueil", href: "#hero" },
@@ -14,7 +15,7 @@ const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ];
 
-const WHATSAPP_LINK = "https://wa.me/22657575701?text=Bonjour%20Coach%20Lady%20Wassa%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20formations.";
+const WHATSAPP_MSG = "Bonjour Coach Lady Wassa, je souhaite en savoir plus sur vos formations.";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -65,14 +66,14 @@ export default function Navbar() {
                 Espace Membre
               </Button>
             </a>
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+            <button onClick={() => openWhatsApp(WHATSAPP_MSG)}>
               <Button
                 data-testid="nav-cta-whatsapp"
                 className="bg-[#0B3A5A] hover:bg-[#145A8A] text-white rounded-full px-6 text-sm"
               >
                 Contactez-moi
               </Button>
-            </a>
+            </button>
           </div>
 
           {/* Mobile menu toggle */}
@@ -100,11 +101,11 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="mt-2">
+            <button onClick={() => { setMenuOpen(false); openWhatsApp(WHATSAPP_MSG); }} className="mt-2">
               <Button className="w-full bg-[#0B3A5A] hover:bg-[#145A8A] text-white rounded-full text-sm">
                 Contactez-moi
               </Button>
-            </a>
+            </button>
           </div>
         </div>
       )}

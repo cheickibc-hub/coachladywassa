@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { Brain, Heart, Briefcase, BookOpen, Users, Lightbulb, ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "../components/ui/button";
-
-const WHATSAPP_LINK = "https://wa.me/22657575701?text=Bonjour%20Coach%20Lady%20Wassa%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20services.";
+import { openWhatsApp } from "../utils/whatsapp";
 
 const SERVICES = [
   {
@@ -152,7 +151,7 @@ export default function ServicesSection() {
               loading="lazy"
             />
           </div>
-          <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+          <button onClick={() => openWhatsApp("Bonjour Coach Lady Wassa, je souhaite en savoir plus sur vos services.")}>
             <Button
               data-testid="services-cta"
               className="bg-[#0B3A5A] hover:bg-[#145A8A] text-white rounded-full px-10 py-6 text-base font-semibold group"
@@ -161,7 +160,7 @@ export default function ServicesSection() {
               Discuter de vos besoins
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
-          </a>
+          </button>
         </motion.div>
       </div>
     </section>

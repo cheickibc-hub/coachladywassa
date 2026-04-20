@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { Check, ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "../components/ui/button";
-
-const WHATSAPP_BASE = "https://wa.me/22657575701?text=";
+import { openWhatsApp } from "../utils/whatsapp";
 
 const FORMATIONS = [
   {
@@ -163,10 +162,9 @@ export default function FormationsSection() {
                 ))}
               </div>
 
-              <a
-                href={`${WHATSAPP_BASE}Bonjour Coach, je suis intéressé(e) par la formation ${f.name}. Pouvez-vous me donner plus d'informations ?`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => openWhatsApp(`Bonjour Coach, je suis intéressé(e) par la formation ${f.name}. Pouvez-vous me donner plus d'informations ?`)}
+                className="w-full"
               >
                 <Button
                   data-testid={`formation-cta-${f.tier.toLowerCase()}`}
@@ -182,7 +180,7 @@ export default function FormationsSection() {
                   Nous contacter
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
-              </a>
+              </button>
             </motion.div>
           ))}
         </div>
