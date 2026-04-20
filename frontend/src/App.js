@@ -1,13 +1,14 @@
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import ProblemSection from "./components/ProblemSection";
 import AboutSection from "./components/AboutSection";
 import VideoSection from "./components/VideoSection";
 import TestimonialsSection from "./components/TestimonialsSection";
-import FormationsSection from "./components/FormationsSection";
 import ServicesSection from "./components/ServicesSection";
+import FormationsSection from "./components/FormationsSection";
 import QuizSection from "./components/QuizSection";
 import WebinarSection from "./components/WebinarSection";
 import BookSection from "./components/BookSection";
@@ -17,6 +18,9 @@ import FAQSection from "./components/FAQSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import MemberDashboard from "./pages/MemberDashboard";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -47,11 +51,16 @@ const HomePage = () => {
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/connexion" element={<LoginPage />} />
+          <Route path="/inscription" element={<RegisterPage />} />
+          <Route path="/membre" element={<MemberDashboard />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

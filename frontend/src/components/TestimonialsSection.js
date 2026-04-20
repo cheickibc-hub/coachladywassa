@@ -18,6 +18,18 @@ const AUDIO_TESTIMONIALS = [
     url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/fqz9dtpm_WhatsApp%20Audio%202026-04-16%20at%2009.58.10.ogg",
     name: "Temoignage audio 4",
   },
+  {
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/sz8nfkv1_WhatsApp%20Ptt%202026-04-16%20at%2009.48.31.ogg",
+    name: "Temoignage audio 5",
+  },
+  {
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/j5g8ovkp_WhatsApp%20Audio%202026-04-16%20at%2009.50.12.ogg",
+    name: "Temoignage audio 6",
+  },
+  {
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/y7jpv6r0_WhatsApp%20Audio%202026-04-16%20at%2009.50.14%20%281%29.ogg",
+    name: "Temoignage audio 7",
+  },
 ];
 
 const WRITTEN_TESTIMONIALS = [

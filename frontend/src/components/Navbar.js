@@ -56,6 +56,15 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
+            <a href="/connexion">
+              <Button
+                data-testid="nav-cta-member"
+                variant="outline"
+                className="border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#0B3A5A] rounded-full px-5 text-sm"
+              >
+                Espace Membre
+              </Button>
+            </a>
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
               <Button
                 data-testid="nav-cta-whatsapp"
