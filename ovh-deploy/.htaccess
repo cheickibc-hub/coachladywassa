@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# Redirect API calls to PHP files
+RewriteRule ^api/leads$ api/leads.php [L,QSA]
+RewriteRule ^api/webinar-registrations$ api/webinar-registrations.php [L,QSA]
+RewriteRule ^api/contact$ api/contact.php [L,QSA]
+RewriteRule ^api/newsletter$ api/newsletter.php [L,QSA]
+RewriteRule ^api/blog/articles$ api/blog/articles.php [L,QSA]
+
+# If file or directory exists, serve it
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Otherwise serve index.html (React Router)
+RewriteRule ^ index.html [L]
