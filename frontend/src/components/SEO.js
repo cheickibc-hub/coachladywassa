@@ -4,8 +4,7 @@ const DEFAULT = {
   title: "Coach Lady Wassa Traoré | Cabinet Mindset Coaching — Neurosciences Appliquées",
   description:
     "MasterCoach ICI certifié, Life & Corporate Coach. Formations, coaching et quiz fondés sur les neurosciences pour dirigeants, femmes actives et étudiants. Ouagadougou, Burkina Faso.",
-  image:
-    "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/orkoyz8r_image.png",
+  image: "https://www.coachladywassa.com/og-image.jpg",
   url: "https://www.coachladywassa.com",
   type: "website",
   keywords:
