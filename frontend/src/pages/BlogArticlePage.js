@@ -1,31 +1,13 @@
-import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { Button } from "../components/ui/button";
 import SEO from "../components/SEO";
-import axios from "axios";
-
-const API = process.env.REACT_APP_BACKEND_URL;
+import { BLOG_ARTICLES } from "../data/blogArticles";
 
 export default function BlogArticlePage() {
   const { slug } = useParams();
-  const [article, setArticle] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const article = BLOG_ARTICLES.find((a) => a.slug === slug);
 
-  useEffect(() => {
-    const fetchArticle = async () => {
-      try {
-        const { data } = await axios.get(`${API}/api/blog/articles/${slug}`);
-        setArticle(data);
-      } catch (err) {
-        console.error(err);
-      }
-      setLoading(false);
-    };
-    fetchArticle();
-  }, [slug]);
-
-  if (loading) return <div className="min-h-screen flex items-center justify-center" style={{ background: "#FAF9F6" }}><p>Chargement...</p></div>;
   if (!article) return <div className="min-h-screen flex items-center justify-center" style={{ background: "#FAF9F6" }}><p>Article non trouvé</p></div>;
 
   return (

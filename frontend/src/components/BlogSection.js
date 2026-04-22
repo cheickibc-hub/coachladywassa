@@ -1,32 +1,22 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Clock, ArrowRight } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Link } from "react-router-dom";
-import axios from "axios";
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+import { BLOG_ARTICLES } from "../data/blogArticles";
 
 const CATEGORIES = ["Tous", "Gestion Stress", "Performance", "Neurosciences", "Neuroplasticite", "Productivite"];
 
+// Normalize category for comparison (remove accents, lowercase)
+const norm = (s) => (s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
 export default function BlogSection() {
-  const [articles, setArticles] = useState([]);
+  const articles = BLOG_ARTICLES;
   const [activeCategory, setActiveCategory] = useState("Tous");
 
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const res = await axios.get(`${API}/blog/articles`);
-        setArticles(res.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchArticles();
-  }, []);
-
-  const filtered = activeCategory === "Tous" ? articles : articles.filter((a) => a.category === activeCategory);
+  const filtered = activeCategory === "Tous"
+    ? articles
+    : articles.filter((a) => norm(a.category) === norm(activeCategory));
 
   return (
     <section
