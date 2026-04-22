@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import {
   LogOut, Users, Bell, MessageCircle, ArrowLeft, Check, X,
-  UserPlus, Mail, BarChart3, BookOpen, ExternalLink
+  UserPlus, Mail, BarChart3, BookOpen, ExternalLink, Trash2, Key, Plus
 } from "lucide-react";
 import axios from "axios";
 
@@ -22,6 +22,12 @@ export default function AdminDashboard() {
   const [notifications, setNotifications] = useState([]);
   const [contacts, setContacts] = useState([]);
   const [webinarRegs, setWebinarRegs] = useState([]);
+  const [showCreateForm, setShowCreateForm] = useState(false);
+  const [createForm, setCreateForm] = useState({ name: "", email: "", password: "", enrolled_formations: [] });
+  const [createError, setCreateError] = useState("");
+  const [createLoading, setCreateLoading] = useState(false);
+  const [resetPwdFor, setResetPwdFor] = useState(null);
+  const [newPwd, setNewPwd] = useState("");
 
   useEffect(() => {
     if (!loading && (!user || user.role !== "admin")) navigate("/connexion");
@@ -75,6 +81,55 @@ export default function AdminDashboard() {
       await axios.put(`${API}/api/admin/members/${userId}/unenroll`, { formation_id: formationId }, { withCredentials: true });
       fetchMembers();
     } catch (e) { console.error(e); }
+  };
+
+  const createMember = async (e) => {
+    e.preventDefault();
+    setCreateError("");
+    setCreateLoading(true);
+    try {
+      await axios.post(`${API}/api/admin/members`, createForm, { withCredentials: true });
+      setCreateForm({ name: "", email: "", password: "", enrolled_formations: [] });
+      setShowCreateForm(false);
+      fetchMembers();
+      fetchStats();
+    } catch (err) {
+      setCreateError(err.response?.data?.detail || "Erreur lors de la création");
+    } finally {
+      setCreateLoading(false);
+    }
+  };
+
+  const deleteMember = async (userId, name) => {
+    if (!window.confirm(`Supprimer définitivement le membre "${name}" ?`)) return;
+    try {
+      await axios.delete(`${API}/api/admin/members/${userId}`, { withCredentials: true });
+      fetchMembers();
+      fetchStats();
+    } catch (e) {
+      alert(e.response?.data?.detail || "Erreur lors de la suppression");
+    }
+  };
+
+  const resetPassword = async (userId) => {
+    if (newPwd.length < 6) { alert("Mot de passe trop court (min 6 caractères)"); return; }
+    try {
+      await axios.put(`${API}/api/admin/members/${userId}/password`, { password: newPwd }, { withCredentials: true });
+      setResetPwdFor(null);
+      setNewPwd("");
+      alert("Mot de passe réinitialisé avec succès");
+    } catch (e) {
+      alert(e.response?.data?.detail || "Erreur");
+    }
+  };
+
+  const toggleCreateFormation = (fid) => {
+    setCreateForm((prev) => ({
+      ...prev,
+      enrolled_formations: prev.enrolled_formations.includes(fid)
+        ? prev.enrolled_formations.filter((f) => f !== fid)
+        : [...prev.enrolled_formations, fid],
+    }));
   };
 
   const markAllRead = async () => {
@@ -166,9 +221,93 @@ export default function AdminDashboard() {
         {/* Members Tab */}
         {tab === "members" && (
           <div data-testid="admin-members-panel">
-            <h2 className="text-2xl font-bold text-[#0B3A5A] mb-6" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
-              Gestion des Membres ({members.length})
-            </h2>
+            <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
+              <h2 className="text-2xl font-bold text-[#0B3A5A]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                Gestion des Membres ({members.length})
+              </h2>
+              <Button
+                data-testid="admin-show-create-member-btn"
+                onClick={() => setShowCreateForm(!showCreateForm)}
+                className="bg-[#D4AF37] hover:bg-[#C4A137] text-[#0B3A5A] rounded-full text-sm font-semibold"
+              >
+                <Plus className="w-4 h-4 mr-1" /> {showCreateForm ? "Annuler" : "Créer un membre"}
+              </Button>
+            </div>
+
+            {/* Create Member Form */}
+            {showCreateForm && (
+              <form
+                data-testid="admin-create-member-form"
+                onSubmit={createMember}
+                className="bg-white rounded-xl p-6 border border-[#D4AF37]/30 shadow-sm mb-6"
+              >
+                <h3 className="text-lg font-bold text-[#0B3A5A] mb-4">Nouveau membre</h3>
+                <div className="grid md:grid-cols-3 gap-4 mb-4">
+                  <input
+                    data-testid="create-member-name"
+                    type="text"
+                    placeholder="Nom complet"
+                    required
+                    value={createForm.name}
+                    onChange={(e) => setCreateForm({ ...createForm, name: e.target.value })}
+                    className="px-4 py-2.5 rounded-lg border border-black/10 text-sm focus:outline-none focus:border-[#0B3A5A]"
+                  />
+                  <input
+                    data-testid="create-member-email"
+                    type="email"
+                    placeholder="email@exemple.com"
+                    required
+                    value={createForm.email}
+                    onChange={(e) => setCreateForm({ ...createForm, email: e.target.value })}
+                    className="px-4 py-2.5 rounded-lg border border-black/10 text-sm focus:outline-none focus:border-[#0B3A5A]"
+                  />
+                  <input
+                    data-testid="create-member-password"
+                    type="text"
+                    placeholder="Mot de passe (min 6 caractères)"
+                    required
+                    minLength={6}
+                    value={createForm.password}
+                    onChange={(e) => setCreateForm({ ...createForm, password: e.target.value })}
+                    className="px-4 py-2.5 rounded-lg border border-black/10 text-sm focus:outline-none focus:border-[#0B3A5A]"
+                  />
+                </div>
+                <div className="mb-4">
+                  <p className="text-xs text-[#4A4A4A] mb-2 font-medium">Formations à donner accès :</p>
+                  <div className="flex flex-wrap gap-2">
+                    {FORMATION_IDS.map((fid) => {
+                      const isSel = createForm.enrolled_formations.includes(fid);
+                      return (
+                        <button
+                          key={fid}
+                          type="button"
+                          data-testid={`create-formation-${fid}`}
+                          onClick={() => toggleCreateFormation(fid)}
+                          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                            isSel ? "bg-[#0B3A5A] text-white" : "bg-black/5 text-[#4A4A4A] hover:bg-[#0B3A5A]/10"
+                          }`}
+                        >
+                          {isSel ? <Check className="w-3 h-3" /> : <X className="w-3 h-3 opacity-40" />}
+                          {FORMATION_NAMES[fid]}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+                {createError && (
+                  <p data-testid="create-member-error" className="text-sm text-red-600 mb-3">{createError}</p>
+                )}
+                <Button
+                  data-testid="admin-create-member-submit"
+                  type="submit"
+                  disabled={createLoading}
+                  className="bg-[#0B3A5A] hover:bg-[#145A8A] text-white rounded-full text-sm"
+                >
+                  {createLoading ? "Création..." : "Créer le membre"}
+                </Button>
+              </form>
+            )}
+
             {members.length === 0 ? (
               <p className="text-[#4A4A4A] text-center py-12">Aucun membre inscrit pour le moment.</p>
             ) : (
@@ -181,12 +320,52 @@ export default function AdminDashboard() {
                         <p className="text-sm text-[#4A4A4A]">{m.email}</p>
                         <p className="text-xs text-[#4A4A4A]/50 mt-1">Inscrit le {m.created_at?.slice(0, 10)}</p>
                       </div>
-                      <a href={`https://wa.me/${m.email?.includes('+') ? '' : '22657575701'}?text=Bonjour ${m.name}`} target="_blank" rel="noopener noreferrer">
-                        <Button size="sm" className="bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-full text-xs">
-                          <MessageCircle className="w-3.5 h-3.5 mr-1" /> WhatsApp
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <Button
+                          data-testid={`admin-reset-pwd-${m._id}`}
+                          size="sm"
+                          variant="outline"
+                          onClick={() => { setResetPwdFor(m._id === resetPwdFor ? null : m._id); setNewPwd(""); }}
+                          className="rounded-full text-xs border-[#D4AF37]/40 text-[#0B3A5A]"
+                        >
+                          <Key className="w-3.5 h-3.5 mr-1" /> Mot de passe
                         </Button>
-                      </a>
+                        <Button
+                          data-testid={`admin-delete-${m._id}`}
+                          size="sm"
+                          variant="outline"
+                          onClick={() => deleteMember(m._id, m.name)}
+                          className="rounded-full text-xs border-red-200 text-red-600 hover:bg-red-50"
+                        >
+                          <Trash2 className="w-3.5 h-3.5 mr-1" /> Supprimer
+                        </Button>
+                        <a href={`https://wa.me/22657575701?text=Bonjour ${m.name}`} target="_blank" rel="noopener noreferrer">
+                          <Button size="sm" className="bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-full text-xs">
+                            <MessageCircle className="w-3.5 h-3.5 mr-1" /> WhatsApp
+                          </Button>
+                        </a>
+                      </div>
                     </div>
+                    {resetPwdFor === m._id && (
+                      <div className="mt-3 flex items-center gap-2 bg-[#FAF9F6] p-3 rounded-lg">
+                        <input
+                          data-testid={`admin-new-pwd-${m._id}`}
+                          type="text"
+                          placeholder="Nouveau mot de passe (min 6 car.)"
+                          value={newPwd}
+                          onChange={(e) => setNewPwd(e.target.value)}
+                          className="flex-1 px-3 py-2 rounded-lg border border-black/10 text-sm focus:outline-none focus:border-[#0B3A5A]"
+                        />
+                        <Button
+                          data-testid={`admin-confirm-reset-${m._id}`}
+                          size="sm"
+                          onClick={() => resetPassword(m._id)}
+                          className="bg-[#0B3A5A] hover:bg-[#145A8A] text-white rounded-full text-xs"
+                        >
+                          Valider
+                        </Button>
+                      </div>
+                    )}
                     <div className="mt-4 flex flex-wrap gap-2">
                       {FORMATION_IDS.map((fid) => {
                         const isEnrolled = m.enrolled_formations?.includes(fid);

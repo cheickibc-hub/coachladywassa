@@ -114,6 +114,15 @@ class LoginInput(BaseModel):
 class EnrollInput(BaseModel):
     formation_id: str
 
+class AdminCreateMemberInput(BaseModel):
+    name: str
+    email: str
+    password: str
+    enrolled_formations: list[str] = []
+
+class PasswordInput(BaseModel):
+    password: str
+
 
 BLOG_ARTICLES = [
     {
@@ -496,6 +505,75 @@ async def admin_list_members(request: Request):
         user["_id"] = str(user["_id"])
         members.append(user)
     return members
+
+@admin_router.post("/members")
+async def admin_create_member(input_data: AdminCreateMemberInput, request: Request):
+    await require_admin(request)
+    email = input_data.email.lower().strip()
+    if not email or "@" not in email:
+        raise HTTPException(status_code=400, detail="Email invalide")
+    if len(input_data.password) < 6:
+        raise HTTPException(status_code=400, detail="Mot de passe trop court (min 6 caractères)")
+    existing = await db.users.find_one({"email": email})
+    if existing:
+        raise HTTPException(status_code=400, detail="Cet email est déjà utilisé")
+    user_doc = {
+        "email": email,
+        "password_hash": hash_password(input_data.password),
+        "name": input_data.name.strip(),
+        "role": "member",
+        "enrolled_formations": input_data.enrolled_formations or [],
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "created_by_admin": True,
+    }
+    result = await db.users.insert_one(user_doc)
+    user_id = str(result.inserted_id)
+    await db.notifications.insert_one({
+        "type": "new_member",
+        "message": f"Nouveau membre créé par admin : {input_data.name} ({email})",
+        "user_name": input_data.name,
+        "user_email": email,
+        "whatsapp_url": f"https://wa.me/22657575701?text=Bienvenue {input_data.name} ! Votre compte a été créé.",
+        "read": False,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+    })
+    return {
+        "_id": user_id,
+        "email": email,
+        "name": input_data.name,
+        "role": "member",
+        "enrolled_formations": user_doc["enrolled_formations"],
+        "created_at": user_doc["created_at"],
+    }
+
+@admin_router.delete("/members/{user_id}")
+async def admin_delete_member(user_id: str, request: Request):
+    await require_admin(request)
+    try:
+        oid = ObjectId(user_id)
+    except Exception:
+        raise HTTPException(status_code=400, detail="ID invalide")
+    user = await db.users.find_one({"_id": oid})
+    if not user:
+        raise HTTPException(status_code=404, detail="Membre non trouvé")
+    if user.get("role") == "admin":
+        raise HTTPException(status_code=403, detail="Impossible de supprimer un admin")
+    await db.users.delete_one({"_id": oid})
+    return {"message": "Membre supprimé"}
+
+@admin_router.put("/members/{user_id}/password")
+async def admin_reset_member_password(user_id: str, input_data: PasswordInput, request: Request):
+    await require_admin(request)
+    try:
+        oid = ObjectId(user_id)
+    except Exception:
+        raise HTTPException(status_code=400, detail="ID invalide")
+    if len(input_data.password) < 6:
+        raise HTTPException(status_code=400, detail="Mot de passe trop court (min 6 caractères)")
+    result = await db.users.update_one({"_id": oid}, {"$set": {"password_hash": hash_password(input_data.password)}})
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Membre non trouvé")
+    return {"message": "Mot de passe réinitialisé"}
 
 @admin_router.put("/members/{user_id}/enroll")
 async def admin_enroll_member(user_id: str, input_data: EnrollInput, request: Request):

@@ -10,8 +10,8 @@ const WHATSAPP_LINK = "https://wa.me/22657575701?text=Bonjour%20Coach%20Lady%20W
 
 const NAV_SECTIONS = [
   { label: "Accueil", href: "#hero" },
-  { label: "A propos", href: "#about" },
-  { label: "Temoignages", href: "#testimonials" },
+  { label: "À propos", href: "#about" },
+  { label: "Témoignages", href: "#testimonials" },
   { label: "Formations", href: "#formations" },
   { label: "Quiz", href: "#quiz" },
   { label: "Webinaire", href: "#webinar" },

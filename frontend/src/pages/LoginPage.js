@@ -27,8 +27,12 @@ export default function LoginPage() {
     setError("");
     setLoading(true);
     try {
-      await login(email, password);
-      navigate("/membre");
+      const userData = await login(email, password);
+      if (userData?.role === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/membre");
+      }
     } catch (err) {
       setError(formatError(err.response?.data?.detail) || err.message);
     }

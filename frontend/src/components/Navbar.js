@@ -5,7 +5,7 @@ import { openWhatsApp } from "../utils/whatsapp";
 
 const NAV_LINKS = [
   { label: "Accueil", href: "#hero" },
-  { label: "A propos", href: "#about" },
+  { label: "À propos", href: "#about" },
   { label: "Videos", href: "#videos" },
   { label: "Services", href: "#services" },
   { label: "Formations", href: "#formations" },
