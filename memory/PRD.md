@@ -41,6 +41,15 @@ Build a high-conversion website for Coach Lady Wassa, neuroscience coach in Ouag
 - [x] WhatsApp floating button
 - [x] Backend API (5 endpoints)
 
+## What's Been Implemented (Apr 2026)
+- [x] Admin dashboard: manual member creation (email + password + formation access)
+- [x] Admin can delete members & reset member passwords
+- [x] Admin login auto-redirects to /admin (based on role)
+- [x] Typos fixed: "À propos" + "Témoignages" (with accents) in Navbar/Footer
+- [x] OVH `.htaccess` with proper React Router rewrite rules (mod_rewrite) + HTTPS + www redirect + cache/gzip headers
+- [x] Fresh OVH deployment package at `/app/site-ovh-coachladywassa.zip`
+- [x] Fixed nested `<button>` hydration warnings in Navbar
+
 ## Backlog
 ### P0 (Before Launch)
 - Replace placeholder WhatsApp number with real number

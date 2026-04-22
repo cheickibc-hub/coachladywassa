@@ -66,14 +66,13 @@ export default function Navbar() {
                 Espace Membre
               </Button>
             </a>
-            <button onClick={() => openWhatsApp(WHATSAPP_MSG)}>
-              <Button
-                data-testid="nav-cta-whatsapp"
-                className="bg-[#0B3A5A] hover:bg-[#145A8A] text-white rounded-full px-6 text-sm"
-              >
-                Contactez-moi
-              </Button>
-            </button>
+            <Button
+              data-testid="nav-cta-whatsapp"
+              onClick={() => openWhatsApp(WHATSAPP_MSG)}
+              className="bg-[#0B3A5A] hover:bg-[#145A8A] text-white rounded-full px-6 text-sm"
+            >
+              Contactez-moi
+            </Button>
           </div>
 
           {/* Mobile menu toggle */}
@@ -101,11 +100,12 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <button onClick={() => { setMenuOpen(false); openWhatsApp(WHATSAPP_MSG); }} className="mt-2">
-              <Button className="w-full bg-[#0B3A5A] hover:bg-[#145A8A] text-white rounded-full text-sm">
-                Contactez-moi
-              </Button>
-            </button>
+            <Button
+              onClick={() => { setMenuOpen(false); openWhatsApp(WHATSAPP_MSG); }}
+              className="mt-2 w-full bg-[#0B3A5A] hover:bg-[#145A8A] text-white rounded-full text-sm"
+            >
+              Contactez-moi
+            </Button>
           </div>
         </div>
       )}
