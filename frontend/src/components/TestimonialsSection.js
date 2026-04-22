@@ -4,63 +4,78 @@ import { Star, Quote, Volume2 } from "lucide-react";
 const AUDIO_TESTIMONIALS = [
   {
     url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/gxan6rt5_WhatsApp%20Audio%202026-04-16%20at%2009.51.26.ogg",
-    name: "Temoignage audio 1",
+    name: "Témoignage audio 1",
   },
   {
     url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/kd8s9k7x_WhatsApp%20Audio%202026-04-16%20at%2009.57.30.ogg",
-    name: "Temoignage audio 2",
+    name: "Témoignage audio 2",
   },
   {
-    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/8uszmbij_WhatsApp%20Audio%202026-04-16%20at%2010.03.44.ogg",
-    name: "Temoignage audio 3",
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/25to3naw_WhatsApp%20Audio%202026-04-22%20at%2012.06.43%20%281%29.ogg",
+    name: "Témoignage audio 3",
   },
   {
-    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/fqz9dtpm_WhatsApp%20Audio%202026-04-16%20at%2009.58.10.ogg",
-    name: "Temoignage audio 4",
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/q5fet5w0_WhatsApp%20Audio%202026-04-22%20at%2012.19.25.ogg",
+    name: "Témoignage audio 4",
   },
   {
-    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/sz8nfkv1_WhatsApp%20Ptt%202026-04-16%20at%2009.48.31.ogg",
-    name: "Temoignage audio 5",
-  },
-  {
-    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/j5g8ovkp_WhatsApp%20Audio%202026-04-16%20at%2009.50.12.ogg",
-    name: "Temoignage audio 6",
-  },
-  {
-    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/y7jpv6r0_WhatsApp%20Audio%202026-04-16%20at%2009.50.14%20%281%29.ogg",
-    name: "Temoignage audio 7",
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/bbixfdwe_WhatsApp%20Audio%202026-04-22%20at%2012.18.50.ogg",
+    name: "Témoignage audio 5",
   },
 ];
 
 const WRITTEN_TESTIMONIALS = [
   {
+    name: "Ouedraogo Safiatou",
+    title: "Participante Voix de Reine",
+    result: "Prise de conscience transformatrice",
+    quote: "Vous rencontrer est une bénédiction dans ma vie. Je sais que je vais réussir, j'ai une grande mission, je suis une grande personnalité et je vais y arriver grâce à vous.",
+    rating: 5,
+  },
+  {
+    name: "Madina Nikiema",
+    title: "Communicante, Maîtresse de cérémonie - Ouagadougou",
+    result: "Dépassement de ses limites",
+    quote: "Ce programme s'il n'existait pas fallait le créer. Il vous permettra de dépasser vos limites, de devenir la meilleure version de vous ! D'ici 2026, mes amis et parents ne me reconnaîtront pas.",
+    rating: 5,
+  },
+  {
+    name: "Ouedraogo Djamila",
+    title: "Participante Voix de Reine",
+    result: "Renaissance complète",
+    quote: "Ce programme n'est pas un simple coaching mais une transformation de vie, c'est tout simplement de la renaissance. Il t'amène à changer complètement ta vie sur tous les plans.",
+    rating: 5,
+  },
+  {
+    name: "Sawadogo Adjaratou",
+    title: "Participante Voix de Reine",
+    result: "Force et confiance retrouvées",
+    quote: "Coach Lady Wassa, la spécialiste du cerveau, mon soutien, mon professeur, mon mentor, ma force, ma sœur. Tu es ma force invisible, ma force tranquille qui guide chacun de mes pas.",
+    rating: 5,
+  },
+  {
+    name: "Carine Ohg",
+    title: "Participante Voix de Reine",
+    result: "Libérée du besoin de validation",
+    quote: "J'attendais cette voix extérieure pour réaliser que je vivais constamment dans l'aliénation, dans le souci de plaire aux autres. Maintenant, je n'ai plus besoin de me justifier pour qu'on me valide.",
+    rating: 5,
+  },
+  {
     name: "Mlle Yogo Huguette",
     title: "Participante Voix de Reine",
-    result: "Programme Voix de Reine : une pepite",
-    quote: "Je voulais vous remercier pour le programme Voix de Reine, vraiment c'est une pepite. Ce mois m'a permis de mieux me comprendre.",
+    result: "Programme Voix de Reine : une pépite",
+    quote: "Je suis tellement contente d'être dans ce programme. J'imagine qu'à la fin des 1 mois je serai une meilleure version de moi. C'est ton meilleur investissement.",
     rating: 5,
   },
-  {
-    name: "Aminata Barry",
-    title: "Femme active",
-    result: "Formation tres riche",
-    quote: "J'ai compris beaucoup de choses sur moi que je n'imaginais meme pas avant. Je sais quoi faire maintenant pour changer.",
-    rating: 5,
-  },
-  {
-    name: "Ouedraogo L.",
-    title: "Leader d'association",
-    result: "Confiance en soi retrouvee",
-    quote: "Le programme voix de reine m'a permis d'avoir plus confiance en moi et de me fixer des objectifs et adapter mon cerveau a accepter ces nouveaux changements a 70%.",
-    rating: 5,
-  },
-  {
-    name: "Faridatou T.",
-    title: "Participante au coaching",
-    result: "Transformation complete",
-    quote: "Chaque jour il faut que je vous remercie. Je sens que je deviens plus organisee dans ma facon de penser. J'ai l'impression de tout comprendre autour de moi.",
-    rating: 5,
-  },
+];
+
+const WHATSAPP_SCREENSHOTS = [
+  { src: "/temoignage-1.png", alt: "Témoignage Ouedraogo Safiatou" },
+  { src: "/temoignage-3.png", alt: "Témoignage Madina Nikiema" },
+  { src: "/temoignage-4.png", alt: "Témoignage Ouedraogo Djamila" },
+  { src: "/temoignage-6.png", alt: "Témoignage Sawadogo Adjaratou" },
+  { src: "/temoignage-7.png", alt: "Témoignage Carine Ohg" },
+  { src: "/temoignage-5.png", alt: "Témoignage Mlle Yogo Huguette" },
 ];
 
 export default function TestimonialsSection() {
@@ -96,96 +111,24 @@ export default function TestimonialsSection() {
 
         {/* WhatsApp Screenshots */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          <motion.div
-            className="testimonial-screenshot glass-card rounded-2xl p-3"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <img
-              data-testid="testimonial-screenshot-1"
-              src="https://customer-assets.emergentagent.com/job_be26550a-7109-49a1-b5f6-ce556eeedf7e/artifacts/m9454gdm_WhatsApp%20Image%202026-04-16%20at%2010.08.12.jpeg"
-              alt="Temoignage WhatsApp Ouedraogo"
-              className="w-full rounded-xl"
-              loading="lazy"
-            />
-          </motion.div>
-          <motion.div
-            className="testimonial-screenshot glass-card rounded-2xl p-3"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <img
-              data-testid="testimonial-screenshot-2"
-              src="https://customer-assets.emergentagent.com/job_be26550a-7109-49a1-b5f6-ce556eeedf7e/artifacts/87nwjs1w_WhatsApp%20Image%202026-04-16%20at%2010.06.37.jpeg"
-              alt="Temoignage WhatsApp Aminata Barry"
-              className="w-full rounded-xl"
-              loading="lazy"
-            />
-          </motion.div>
-          <motion.div
-            className="testimonial-screenshot glass-card rounded-2xl p-3"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <img
-              data-testid="testimonial-screenshot-3"
-              src="/doc-img-1.jpg"
-              alt="Temoignage WhatsApp Awa Nacoul"
-              className="w-full rounded-xl"
-              loading="lazy"
-            />
-          </motion.div>
-          <motion.div
-            className="testimonial-screenshot glass-card rounded-2xl p-3"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.05 }}
-          >
-            <img
-              data-testid="testimonial-screenshot-4"
-              src="/doc-img-6.jpg"
-              alt="Temoignage WhatsApp Mlle Yogo Huguette"
-              className="w-full rounded-xl"
-              loading="lazy"
-            />
-          </motion.div>
-          <motion.div
-            className="testimonial-screenshot glass-card rounded-2xl p-3"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-          >
-            <img
-              data-testid="testimonial-screenshot-5"
-              src="/doc-img-7.jpg"
-              alt="Temoignage WhatsApp - Video Loom"
-              className="w-full rounded-xl"
-              loading="lazy"
-            />
-          </motion.div>
-          <motion.div
-            className="testimonial-screenshot glass-card rounded-2xl p-3"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-          >
-            <img
-              data-testid="testimonial-screenshot-6"
-              src="/doc-img-8.jpg"
-              alt="Temoignage WhatsApp Faridatou"
-              className="w-full rounded-xl"
-              loading="lazy"
-            />
-          </motion.div>
+          {WHATSAPP_SCREENSHOTS.map((img, i) => (
+            <motion.div
+              key={i}
+              className="testimonial-screenshot glass-card rounded-2xl p-3"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+            >
+              <img
+                data-testid={`testimonial-screenshot-${i + 1}`}
+                src={img.src}
+                alt={img.alt}
+                className="w-full rounded-xl"
+                loading="lazy"
+              />
+            </motion.div>
+          ))}
         </div>
 
         {/* Audio Testimonials */}
@@ -203,7 +146,7 @@ export default function TestimonialsSection() {
             <Volume2 className="inline-block w-5 h-5 mr-2 text-[#D4AF37]" />
             Témoignages Audio
           </h3>
-          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
             {AUDIO_TESTIMONIALS.map((audio, i) => (
               <div
                 key={i}
@@ -221,7 +164,7 @@ export default function TestimonialsSection() {
         </motion.div>
 
         {/* Written Testimonials */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {WRITTEN_TESTIMONIALS.map((t, i) => (
             <motion.div
               key={i}
@@ -272,25 +215,25 @@ export default function TestimonialsSection() {
           <div className="rounded-2xl overflow-hidden shadow-lg">
             <img
               src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/ci1jbbzz_image.png"
-              alt="Coach Lady Wassa - Ceremonie remise de cheque"
+              alt="Coach Lady Wassa - Cérémonie"
               className="w-full object-cover aspect-square"
               loading="lazy"
             />
             <div className="bg-white p-4">
-              <p className="text-sm font-bold text-[#0B3A5A]">Ceremonie officielle</p>
+              <p className="text-sm font-bold text-[#0B3A5A]">Cérémonie officielle</p>
               <p className="text-xs text-[#4A4A4A]">Reconnaissance du travail de Coach Lady Wassa</p>
             </div>
           </div>
           <div className="rounded-2xl overflow-hidden shadow-lg">
             <img
-              src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/zts5iwg8_image.png"
-              alt="Coach Lady Wassa presentant son livre"
+              src="/temoignage-13.png"
+              alt="Journée Nationale Positivité"
               className="w-full object-cover aspect-square"
               loading="lazy"
             />
             <div className="bg-white p-4">
-              <p className="text-sm font-bold text-[#0B3A5A]">Presentation du livre</p>
-              <p className="text-xs text-[#4A4A4A]">"L'art de faire face a ses peurs" - Evenement officiel</p>
+              <p className="text-sm font-bold text-[#0B3A5A]">Journée Nationale Positivité</p>
+              <p className="text-xs text-[#4A4A4A]">Événement communautaire avec Coach Lady Wassa</p>
             </div>
           </div>
         </motion.div>
@@ -304,10 +247,10 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.5 }}
         >
           {[
-            { number: "100+", label: "Clients transformes" },
+            { number: "100+", label: "Clients transformés" },
             { number: "95%", label: "Taux de satisfaction" },
             { number: "4-8", label: "Semaines de transformation" },
-            { number: "12K+", label: "Abonnes" },
+            { number: "12K+", label: "Abonnés" },
           ].map((stat, i) => (
             <div key={i} className="text-center p-6 rounded-2xl bg-[#0B3A5A]/[0.03]">
               <p className="text-3xl md:text-4xl font-bold text-[#0B3A5A]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
