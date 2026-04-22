@@ -49,6 +49,10 @@ Build a high-conversion website for Coach Lady Wassa, neuroscience coach in Ouag
 - [x] OVH `.htaccess` with proper React Router rewrite rules (mod_rewrite) + HTTPS + www redirect + cache/gzip headers
 - [x] Fresh OVH deployment package at `/app/site-ovh-coachladywassa.zip`
 - [x] Fixed nested `<button>` hydration warnings in Navbar
+- [x] SEO: react-helmet-async with dynamic per-page meta (title, description, OG, Twitter)
+- [x] SEO: JSON-LD structured data (Person, ProfessionalService, Article schemas)
+- [x] SEO: sitemap.xml + robots.txt
+- [x] Exit-intent popup (desktop mouse-leave + mobile 45s timer) capturing leads via /api/leads with profile_type='exit_intent', 7-day localStorage cooldown
 
 ## Backlog
 ### P0 (Before Launch)
