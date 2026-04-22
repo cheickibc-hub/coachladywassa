@@ -1,5 +1,6 @@
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { AuthProvider } from "./contexts/AuthContext";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
@@ -18,6 +19,8 @@ import FAQSection from "./components/FAQSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
+import ExitIntentPopup from "./components/ExitIntentPopup";
+import SEO from "./components/SEO";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import MemberDashboard from "./pages/MemberDashboard";
@@ -30,6 +33,7 @@ const API = `${BACKEND_URL}/api`;
 const HomePage = () => {
   return (
     <main>
+      <SEO />
       <Navbar />
       <HeroSection />
       <ProblemSection />
@@ -47,24 +51,27 @@ const HomePage = () => {
       <ContactSection apiUrl={API} />
       <Footer />
       <WhatsAppButton />
+      <ExitIntentPopup />
     </main>
   );
 };
 
 function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/connexion" element={<LoginPage />} />
-          <Route path="/inscription" element={<RegisterPage />} />
-          <Route path="/membre" element={<MemberDashboard />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/blog/:slug" element={<BlogArticlePage />} />
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+    <HelmetProvider>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/connexion" element={<LoginPage />} />
+            <Route path="/inscription" element={<RegisterPage />} />
+            <Route path="/membre" element={<MemberDashboard />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/blog/:slug" element={<BlogArticlePage />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
+    </HelmetProvider>
   );
 }
 

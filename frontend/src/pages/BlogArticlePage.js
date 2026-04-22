@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { Button } from "../components/ui/button";
+import SEO from "../components/SEO";
 import axios from "axios";
 
 const API = process.env.REACT_APP_BACKEND_URL;
@@ -29,6 +30,18 @@ export default function BlogArticlePage() {
 
   return (
     <div className="min-h-screen" style={{ background: "#FAF9F6" }}>
+      <SEO
+        title={article.title}
+        description={article.excerpt}
+        image={article.image_url}
+        url={`https://www.coachladywassa.com/blog/${slug}`}
+        type="article"
+        keywords={`${article.category}, neurosciences, coaching, ${article.title}`}
+        article={{
+          datePublished: article.published_date || "2025-12-01",
+          dateModified: article.published_date || "2025-12-01",
+        }}
+      />
       {/* Header */}
       <header className="bg-white border-b border-black/5 px-6 md:px-12 py-4">
         <div className="max-w-4xl mx-auto flex items-center justify-between">

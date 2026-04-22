@@ -1,0 +1,72 @@
+{
+  "summary": "Frontend-only testing of SEO meta tags, JSON-LD structured data, robots.txt, sitemap.xml, and the ExitIntentPopup lead-capture flow for Coach Lady Wassa. 10/11 requested items PASS. One MINOR issue: duplicate og:* meta tags on blog pages because index.html ships static OG tags that Helmet does not manage, so blog article renders two <meta property=\"og:type\">: first 'website' (static), second 'article' (Helmet). Most crawlers will pick the first, so dynamic og:type is effectively overridden. Title, description and Article JSON-LD all update correctly per article.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "Blog article Open Graph meta",
+        "issue": "Two <meta property=\"og:type\"> tags present on /blog/:slug pages — first ('website') from /public/index.html, second ('article') from react-helmet-async. querySelector returns 'website'. Same duplication exists for og:title, og:description, og:image, og:url, og:locale, meta[name=description], meta[name=keywords], and <title>. Helmet injects new tags instead of replacing the static ones because they lack Helmet's tracking attribute. Impact: social share previews (FB/LinkedIn) that read the FIRST meta tag will always show the home-page default text even for blog articles.",
+        "affected_selectors": ["meta[property=\"og:type\"]", "meta[property=\"og:title\"]", "meta[property=\"og:description\"]", "meta[name=\"description\"]"]
+      }
+    ],
+    "design_issues": []
+  },
+  "seo_verification": {
+    "home_title_exact_match": true,
+    "home_title_value": "Coach Lady Wassa Traoré | Cabinet Mindset Coaching — Neurosciences Appliquées",
+    "blog_title_dynamic": true,
+    "blog_title_example": "7 techniques neurosciences pour gérer le stress sans médicaments | Coach Lady Wassa",
+    "jsonld_home": ["Person", "ProfessionalService"],
+    "jsonld_blog": ["Person", "ProfessionalService", "Article"],
+    "robots_txt_accessible_200": true,
+    "robots_txt_contains_sitemap_line": true,
+    "robots_txt_note": "Cloudflare managed content signals are prepended automatically by the hosting layer; our custom rules (Allow /, Disallow /admin|/membre|/connexion|/inscription, Sitemap URL) follow correctly.",
+    "sitemap_xml_accessible_200": true,
+    "sitemap_xml_wellformed": true,
+    "sitemap_urls_count": 7
+  },
+  "exit_intent_popup_verification": {
+    "desktop_mouseleave_trigger": "PASS — popup shows when mouseleave dispatched with clientY<=0",
+    "close_X_button": "PASS — dismisses popup and sets localStorage lw_exit_popup_seen_v1",
+    "close_backdrop_click": "PASS — backdrop click dismisses and sets localStorage flag",
+    "seven_day_suppression": "PASS — after dismiss + reload, mouseleave no longer re-opens popup",
+    "form_submit_post_api_leads": "PASS — POST /api/leads returns 200 with body {id,first_name,email,profile_type:'exit_intent',...}",
+    "success_state_visible": "PASS — [data-testid=exit-popup-success] shown after submit",
+    "mobile_no_blocking": "PASS — on 390x844 viewport popup does NOT show immediately; 45s timer fallback is used; page fully interactive",
+    "testids_present": ["exit-intent-popup", "exit-popup-close", "exit-popup-name", "exit-popup-email", "exit-popup-submit", "exit-popup-success"]
+  },
+  "admin_regression": {
+    "login_redirect": "PASS — admin@ladywassa.com / LadyWassa2025! redirects to /admin",
+    "create_member_visible": "PASS — 'Créer un membre' button present on Membres tab",
+    "existing_members_loaded": "PASS — 7 members listed (including TEST_/uiuser_/pytest_ leftovers from prior iterations)"
+  },
+  "test_report_links": [
+    "/app/test_reports/iteration_3.json"
+  ],
+  "action_items": [
+    "Remove duplicate SEO tags from /app/frontend/public/index.html (og:type, og:title, og:description, og:image, og:url, og:locale, <title>, meta[name=description], meta[name=keywords]). Let react-helmet-async be the sole source. OR alternatively, set <Helmet><meta ...></Helmet> wrapper so Helmet can find and replace them (Helmet replaces meta tags only if their attribute signature matches one it has seen before — adding data-react-helmet=\"true\" to each static tag in index.html also works). Without this fix, social share previews (Facebook/LinkedIn/Twitter) for blog articles will show the home-page defaults instead of per-article OG data.",
+    "(Low priority, pre-existing) Clean up TEST-prefixed member records from earlier test iterations (UI Test User, Enr, RS, Reset User, Pytest User) in the members collection."
+  ],
+  "critical_code_review_comments": [
+    "ExitIntentPopup.js: on axios failure the code silently marks the popup as 'submitted' and stores the localStorage flag — the user sees a success screen even though the lead was never saved. Consider at least logging server error and perhaps retrying once before giving up. Also no client-side email format validation beyond type=email.",
+    "ExitIntentPopup.js: 45-second mobile fallback is very long and not user-configurable. Also relies on window.innerWidth at fire time — if user rotates device between load and timer, trigger may not fire.",
+    "SEO.js: 'areaServed: [BF, CI, SN, FR, CA, BE]' and priceRange '€€' are placeholder values — confirm with business before production.",
+    "public/sitemap.xml is a static file: new blog articles added via admin will NOT automatically appear. Consider generating /api/sitemap.xml on the backend or documenting the manual update step.",
+    "robots.txt lists Sitemap URL for production domain (coachladywassa.com) — correct for prod, but means sitemap on preview URL will not be auto-discovered by crawlers on the preview env. This is intentional and expected."
+  ],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "not tested (frontend-only request)",
+    "frontend": "~91% (10/11 items fully pass; 1 minor og:type duplication issue)"
+  },
+  "test_credentials": "admin@ladywassa.com / LadyWassa2025! (confirmed working)",
+  "seed_data_creation": "None — all tests use ephemeral data. One real lead created in /api/leads with email testuser_exit@example.com, profile_type=exit_intent, id=43b5337d-8ba8-495a-acdb-53db2f647c9d.",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "All SEO + popup testids are stable. Popup localStorage key is 'lw_exit_popup_seen_v1' — clear it before each run. Desktop trigger is reliably simulated via JS-dispatched MouseEvent('mouseleave', {clientY:-5}) on document. Blog article slug used for testing: gerer-stress-neurosciences (exists in seed). Main action item for E1: de-dupe the SEO meta tags between /public/index.html and /components/SEO.js. After that fix, re-verify og:type='article' on blog pages.",
+  "rca_of_issue": "Duplicate og:type root cause: /app/frontend/public/index.html includes a full set of static SEO meta tags (lines with og:type, og:title, og:description, og:image, og:url, og:locale, plus <title>, description, keywords). react-helmet-async only replaces tags it has previously rendered — the pre-existing static tags in index.html are INVISIBLE to Helmet, so Helmet appends its own tags to <head> instead of replacing the static ones. Result: two of each meta on every page. querySelector (and most crawlers) reads the FIRST match, which is the static one → blog pages always expose og:type=website, og:title=home default, etc. Fix: either (a) remove the static OG/description/keywords/title tags from index.html and keep only <title> as a loading placeholder, or (b) add attribute data-react-helmet=\"true\" to each static tag so Helmet will overwrite them. Option (a) is cleaner and recommended; the trade-off is that non-JS crawlers (FB/LinkedIn scrapers DO execute JS nowadays, but some still don't) will not see any OG tags. If SSR/prerender is not planned, option (b) is the safer compromise."
+}

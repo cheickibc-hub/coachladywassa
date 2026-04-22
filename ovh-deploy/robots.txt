@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /membre
+Disallow: /connexion
+Disallow: /inscription
+
+Sitemap: https://www.coachladywassa.com/sitemap.xml
