@@ -11,16 +11,24 @@ const AUDIO_TESTIMONIALS = [
     name: "Témoignage audio 2",
   },
   {
-    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/25to3naw_WhatsApp%20Audio%202026-04-22%20at%2012.06.43%20%281%29.ogg",
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/vm6u6uyo_WhatsApp%20Audio%202026-04-22%20at%2012.06.43%20%281%29.ogg",
     name: "Témoignage audio 3",
   },
   {
-    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/q5fet5w0_WhatsApp%20Audio%202026-04-22%20at%2012.19.25.ogg",
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/fjstjmj0_WhatsApp%20Audio%202026-04-22%20at%2012.19.25.ogg",
     name: "Témoignage audio 4",
   },
   {
-    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/bbixfdwe_WhatsApp%20Audio%202026-04-22%20at%2012.18.50.ogg",
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/anqwjeex_WhatsApp%20Audio%202026-04-22%20at%2012.18.50.ogg",
     name: "Témoignage audio 5",
+  },
+  {
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/phtehnii_WhatsApp%20Audio%202026-04-22%20at%2012.17.57.ogg",
+    name: "Témoignage audio 6",
+  },
+  {
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/ga4svrfe_WhatsApp%20Audio%202026-04-22%20at%2012.06.43.ogg",
+    name: "Témoignage audio 7",
   },
 ];
 
@@ -70,12 +78,18 @@ const WRITTEN_TESTIMONIALS = [
 ];
 
 const WHATSAPP_SCREENSHOTS = [
-  { src: "/temoignage-1.png", alt: "Témoignage Ouedraogo Safiatou" },
-  { src: "/temoignage-3.png", alt: "Témoignage Madina Nikiema" },
-  { src: "/temoignage-4.png", alt: "Témoignage Ouedraogo Djamila" },
-  { src: "/temoignage-6.png", alt: "Témoignage Sawadogo Adjaratou" },
-  { src: "/temoignage-7.png", alt: "Témoignage Carine Ohg" },
-  { src: "/temoignage-5.png", alt: "Témoignage Mlle Yogo Huguette" },
+  { src: "/temoignage-1.png", alt: "Témoignage client 1" },
+  { src: "/temoignage-2.png", alt: "Témoignage client 2" },
+  { src: "/temoignage-3.png", alt: "Témoignage client 3" },
+  { src: "/temoignage-4.png", alt: "Témoignage client 4" },
+  { src: "/temoignage-5.png", alt: "Témoignage client 5" },
+  { src: "/temoignage-6.png", alt: "Témoignage client 6" },
+  { src: "/temoignage-7.png", alt: "Témoignage client 7" },
+  { src: "/temoignage-8.png", alt: "Témoignage client 8" },
+  { src: "/temoignage-9.png", alt: "Témoignage client 9" },
+  { src: "/temoignage-10.png", alt: "Témoignage client 10" },
+  { src: "/temoignage-11.png", alt: "Témoignage client 11" },
+  { src: "/temoignage-12.png", alt: "Témoignage client 12" },
 ];
 
 export default function TestimonialsSection() {
