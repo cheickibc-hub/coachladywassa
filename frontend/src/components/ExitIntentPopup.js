@@ -124,9 +124,10 @@ export default function ExitIntentPopup() {
               </h2>
 
               <p className="text-sm text-[#4A4A4A] mb-6 leading-relaxed">
-                Recevez gratuitement votre <strong>quiz personnalisé</strong> + un
-                guide PDF "7 techniques neurosciences pour dépasser vos blocages".
-                100% gratuit, résultats immédiats.
+                Avant de partir, recevez dans votre boîte mail le lien direct
+                vers <strong>votre quiz personnalisé gratuit</strong> + un message
+                de Coach Lady Wassa. Vous pouvez démarrer le quiz immédiatement
+                en cliquant sur le bouton ci-dessous.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-3">
@@ -155,7 +156,7 @@ export default function ExitIntentPopup() {
                   className="w-full bg-[#D4AF37] hover:bg-[#C49F27] text-[#0B3A5A] rounded-full text-sm font-bold py-6"
                 >
                   <Sparkles className="w-4 h-4 mr-2" />
-                  {loading ? "Envoi..." : "Recevoir mon quiz + guide gratuit"}
+                  {loading ? "Envoi..." : "Démarrer mon quiz gratuit"}
                 </Button>
                 <p className="text-[10px] text-[#4A4A4A]/60 text-center">
                   Vos données sont 100% sécurisées. Aucun spam, jamais.
@@ -174,8 +175,9 @@ export default function ExitIntentPopup() {
                 Merci {firstName} !
               </h2>
               <p className="text-sm text-[#4A4A4A] mb-6">
-                Votre guide arrive par email. Faites défiler la page pour
-                démarrer votre quiz personnalisé maintenant.
+                Un email de confirmation vient d'être envoyé à votre adresse.
+                Cliquez ci-dessous pour démarrer votre quiz personnalisé
+                maintenant.
               </p>
               <Button
                 onClick={() => {
