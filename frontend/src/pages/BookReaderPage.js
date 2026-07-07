@@ -282,27 +282,6 @@ export default function BookReaderPage() {
             </div>
           )}
 
-          {/* Client-side watermark overlay */}
-          <div
-            className="absolute inset-0 pointer-events-none overflow-hidden"
-            style={{ opacity: 0.15 }}
-          >
-            <div
-              className="absolute inset-0 flex items-center justify-center text-[#0B3A5A] font-bold text-xs"
-              style={{
-                transform: "rotate(-30deg) scale(1.5)",
-                whiteSpace: "nowrap",
-                lineHeight: 3,
-              }}
-            >
-              {Array.from({ length: 30 }).map((_, i) => (
-                <div key={i} className="absolute" style={{ top: `${i * 8}%`, left: 0, right: 0, textAlign: "center" }}>
-                  {info?.user_email} • {info?.user_email} • {info?.user_email}
-                </div>
-              ))}
-            </div>
-          </div>
-
           {pageLoading && (
             <div className="absolute inset-0 bg-white/60 backdrop-blur-sm flex items-center justify-center">
               <div className="w-8 h-8 border-4 border-[#D4AF37] border-t-transparent rounded-full animate-spin" />
@@ -353,7 +332,7 @@ export default function BookReaderPage() {
         </div>
         <p className="text-center text-[10px] text-white/40 mt-3">
           <Lock className="inline w-3 h-3 mr-1" />
-          Livre protégé — Lecture uniquement, téléchargement/impression/copie désactivés. Filigrane : {info?.user_email}
+          Livre protégé — Lecture uniquement, téléchargement/impression/copie désactivés.
         </p>
       </footer>
     </div>
