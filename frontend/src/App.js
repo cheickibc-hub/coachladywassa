@@ -26,6 +26,7 @@ import RegisterPage from "./pages/RegisterPage";
 import MemberDashboard from "./pages/MemberDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import BlogArticlePage from "./pages/BlogArticlePage";
+import BookReaderPage from "./pages/BookReaderPage";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -68,6 +69,7 @@ function App() {
             <Route path="/membre" element={<MemberDashboard />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/blog/:slug" element={<BlogArticlePage />} />
+            <Route path="/membre/livre" element={<BookReaderPage />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>

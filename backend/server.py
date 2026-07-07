@@ -119,6 +119,7 @@ class AdminCreateMemberInput(BaseModel):
     email: str
     password: str
     enrolled_formations: list[str] = []
+    book_access: bool = False
 
 class PasswordInput(BaseModel):
     password: str
@@ -393,7 +394,7 @@ async def login(input_data: LoginInput, request: Request, response: Response):
     access_token = create_access_token(user_id, email)
     refresh_token = create_refresh_token(user_id)
     set_auth_cookies(response, access_token, refresh_token)
-    return {"id": user_id, "email": email, "name": user.get("name", ""), "role": user.get("role", "member"), "enrolled_formations": user.get("enrolled_formations", [])}
+    return {"id": user_id, "email": email, "name": user.get("name", ""), "role": user.get("role", "member"), "enrolled_formations": user.get("enrolled_formations", []), "book_access": user.get("book_access", False)}
 
 @auth_router.post("/logout")
 async def logout(response: Response):
@@ -404,7 +405,7 @@ async def logout(response: Response):
 @auth_router.get("/me")
 async def get_me(request: Request):
     user = await get_current_user(request)
-    return {"id": user["_id"], "email": user["email"], "name": user.get("name", ""), "role": user.get("role", "member"), "enrolled_formations": user.get("enrolled_formations", [])}
+    return {"id": user["_id"], "email": user["email"], "name": user.get("name", ""), "role": user.get("role", "member"), "enrolled_formations": user.get("enrolled_formations", []), "book_access": user.get("book_access", False)}
 
 @auth_router.post("/refresh")
 async def refresh_token(request: Request, response: Response):
@@ -523,6 +524,7 @@ async def admin_create_member(input_data: AdminCreateMemberInput, request: Reque
         "name": input_data.name.strip(),
         "role": "member",
         "enrolled_formations": input_data.enrolled_formations or [],
+        "book_access": bool(input_data.book_access),
         "created_at": datetime.now(timezone.utc).isoformat(),
         "created_by_admin": True,
     }
@@ -622,6 +624,98 @@ async def admin_mark_notifications_read(request: Request):
     await require_admin(request)
     await db.notifications.update_many({"read": False}, {"$set": {"read": True}})
     return {"message": "Toutes les notifications marquees comme lues"}
+
+
+# ============================================================================
+# BOOK ACCESS — Livre "L'art de faire face à ses peurs" (secure PDF reader)
+# ============================================================================
+import re
+from io import BytesIO
+try:
+    from PIL import Image, ImageDraw, ImageFont
+    PIL_AVAILABLE = True
+except ImportError:
+    PIL_AVAILABLE = False
+
+BOOK_PAGES_DIR = ROOT_DIR / "private_files" / "pages"
+BOOK_TITLE = "L'art de faire face à ses peurs"
+BOOK_TOTAL_PAGES = 148
+
+class BookAccessToggle(BaseModel):
+    book_access: bool
+
+@admin_router.put("/members/{user_id}/book-access")
+async def admin_toggle_book_access(user_id: str, payload: BookAccessToggle, request: Request):
+    await require_admin(request)
+    try:
+        oid = ObjectId(user_id)
+    except Exception:
+        raise HTTPException(status_code=400, detail="ID invalide")
+    result = await db.users.update_one({"_id": oid}, {"$set": {"book_access": payload.book_access}})
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Membre non trouvé")
+    return {"message": "Accès livre mis à jour", "book_access": payload.book_access}
+
+@api_router.get("/member/book/info")
+async def get_book_info(request: Request):
+    user = await get_current_user(request)
+    if not user.get("book_access") and user.get("role") != "admin":
+        raise HTTPException(status_code=403, detail="Accès au livre non activé pour votre compte. Contactez Coach Lady Wassa.")
+    return {
+        "title": BOOK_TITLE,
+        "total_pages": BOOK_TOTAL_PAGES,
+        "user_email": user.get("email"),
+        "user_name": user.get("name", ""),
+    }
+
+@api_router.get("/member/book/page/{page_num}.jpg")
+async def get_book_page(page_num: int, request: Request):
+    user = await get_current_user(request)
+    if not user.get("book_access") and user.get("role") != "admin":
+        raise HTTPException(status_code=403, detail="Accès au livre non activé")
+    if page_num < 1 or page_num > BOOK_TOTAL_PAGES:
+        raise HTTPException(status_code=404, detail="Page inexistante")
+
+    page_file = BOOK_PAGES_DIR / f"page_{page_num:03d}.jpg"
+    if not page_file.exists():
+        raise HTTPException(status_code=404, detail="Fichier introuvable")
+
+    # Embed watermark server-side with user email
+    watermark_text = user.get("email", "membre").lower()
+    if PIL_AVAILABLE:
+        try:
+            img = Image.open(page_file).convert("RGB")
+            overlay = Image.new("RGBA", img.size, (0, 0, 0, 0))
+            draw = ImageDraw.Draw(overlay)
+            font_size = max(14, int(img.size[0] / 40))
+            try:
+                font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", font_size)
+            except Exception:
+                font = ImageFont.load_default()
+            # Diagonal repeating watermark
+            step_y = font_size * 8
+            step_x = font_size * 20
+            for y in range(0, img.size[1] + step_y, step_y):
+                for x in range(-step_x, img.size[0] + step_x, step_x):
+                    txt_img = Image.new("RGBA", (font_size * 20, font_size * 3), (0, 0, 0, 0))
+                    tdraw = ImageDraw.Draw(txt_img)
+                    tdraw.text((0, 0), watermark_text, fill=(120, 90, 30, 55), font=font)
+                    txt_img = txt_img.rotate(-30, expand=True, resample=Image.BICUBIC)
+                    overlay.paste(txt_img, (x, y), txt_img)
+            combined = Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
+            buf = BytesIO()
+            combined.save(buf, format="JPEG", quality=75, optimize=True)
+            buf.seek(0)
+            headers = {
+                "Cache-Control": "private, no-store, no-cache, must-revalidate, max-age=0",
+                "Pragma": "no-cache",
+                "Content-Disposition": "inline",
+            }
+            return Response(content=buf.getvalue(), media_type="image/jpeg", headers=headers)
+        except Exception as e:
+            logger.exception("Watermark rendering failed: %s", e)
+    # Fallback: return raw page
+    return FileResponse(str(page_file), media_type="image/jpeg", headers={"Cache-Control": "private, no-store"})
 
 
 app.include_router(auth_router)

@@ -33,9 +33,9 @@ export default function HeroSection() {
             <div className="relative">
               <div className="absolute -top-4 -left-4 w-full h-full bg-[#D4AF37]/15 rounded-3xl" />
               <img
-                src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/orkoyz8r_image.png"
-                alt="Coach Lady Wassa Traoré tenant son livre — Cabinet Mindset Coaching"
-                className="relative w-full rounded-3xl object-cover object-top aspect-[4/5] shadow-2xl"
+                src="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/zvo7ayb3_image.png"
+                alt="Coach Lady Wassa Traoré présentant son livre — Cabinet Mindset Coaching"
+                className="relative w-full rounded-3xl object-cover aspect-[4/5] shadow-2xl"
               />
               {/* Floating badge */}
               <div className="absolute -bottom-4 -left-4 backdrop-blur-md bg-white/95 rounded-2xl px-5 py-3 shadow-xl">

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "../components/ui/button";
-import { LogOut, Lock, Play, MessageCircle, ArrowLeft, Check } from "lucide-react";
+import { LogOut, Lock, Play, MessageCircle, ArrowLeft, Check, BookOpen, ArrowRight } from "lucide-react";
 import axios from "axios";
 
 const API = process.env.REACT_APP_BACKEND_URL;
@@ -92,6 +92,42 @@ export default function MemberDashboard() {
             Accedez a vos formations et continuez votre transformation.
           </p>
         </div>
+
+        {/* Book Access Tile (visible only if book_access) */}
+        {user.book_access && (
+          <Link to="/membre/livre" data-testid="member-book-tile" className="block mb-10 group">
+            <div className="relative overflow-hidden rounded-3xl p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all"
+              style={{ background: "linear-gradient(135deg, #0B1D2E 0%, #0B3A5A 50%, #0B1D2E 100%)" }}
+            >
+              {/* Gold decoration */}
+              <div className="absolute -top-16 -right-16 w-64 h-64 bg-[#D4AF37]/20 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="relative flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
+                <div className="flex items-start gap-4 flex-1 min-w-0">
+                  <div className="w-14 h-14 rounded-2xl bg-[#D4AF37]/20 flex items-center justify-center flex-shrink-0">
+                    <BookOpen className="w-7 h-7 text-[#D4AF37]" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs uppercase tracking-[0.2em] text-[#D4AF37] font-semibold mb-2">
+                      Ma bibliothèque
+                    </p>
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 leading-tight" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                      Mon livre : L'art de faire face à ses peurs
+                    </h2>
+                    <p className="text-sm text-white/70 max-w-xl">
+                      Lecture en ligne exclusive · 148 pages · Coach Lady Wassa Traoré
+                    </p>
+                  </div>
+                </div>
+                <div className="bg-[#D4AF37] hover:bg-[#C49F27] text-[#0B1D2E] rounded-full px-6 py-3 font-bold flex items-center gap-2 whitespace-nowrap group-hover:translate-x-1 transition-transform">
+                  Lire maintenant
+                  <ArrowRight className="w-4 h-4" />
+                </div>
+              </div>
+            </div>
+          </Link>
+        )}
 
         {/* Formations Grid */}
         <div className="grid md:grid-cols-2 gap-6">

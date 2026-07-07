@@ -42,17 +42,52 @@ Build a high-conversion website for Coach Lady Wassa, neuroscience coach in Ouag
 - [x] Backend API (5 endpoints)
 
 ## What's Been Implemented (Apr 2026)
-- [x] Admin dashboard: manual member creation (email + password + formation access)
-- [x] Admin can delete members & reset member passwords
+### Admin & Auth
+- [x] Admin dashboard: manual member creation (email + password + formation access + book access)
+- [x] Admin can delete members, reset passwords, toggle book access
 - [x] Admin login auto-redirects to /admin (based on role)
-- [x] Typos fixed: "À propos" + "Témoignages" (with accents) in Navbar/Footer
-- [x] OVH `.htaccess` with proper React Router rewrite rules (mod_rewrite) + HTTPS + www redirect + cache/gzip headers
-- [x] Fresh OVH deployment package at `/app/site-ovh-coachladywassa.zip`
-- [x] Fixed nested `<button>` hydration warnings in Navbar
+
+### UI / Content overhaul (Jul 2026)
+- [x] Hero redesigned with dark navy background + gold headline "Cabinet Mindset Coaching / Life & Corporate Coach", 2 columns (photo + presentation list)
+- [x] Navbar adapts colors (transparent+white on hero, glass+dark on scroll)
+- [x] Problem section rewritten with full new copy + WASA-WASA™ method (4 steps)
+- [x] AboutSection "Mon parcours avec la peur" long-form story
+- [x] Mission de-duplicated (only in About now)
+- [x] Testimonials: 4 book audios + 1 Voix de Reine audio (categorized), 12 WhatsApp screenshots, 6 written reviews, dedicace legend fixed
+- [x] Videos section: Loom videos "Voix de Reine" preserved
+- [x] Media & Presse: added 2 new .mov event/interview videos
+- [x] BookSection redesigned as flagship product: gold "Best-Seller" badge, huge banner, glow effects, promo LIVRE20, 3 format cards with WhatsApp CTA
+- [x] Section order optimized: Hero → Problem → About → Services → Formations → Book → Testimonials → Videos → Quiz → Webinar → Media → Blog → FAQ → Contact
+
+### Secure Online Book Reader (Jul 2026)
+- [x] Backend: PDF (148 pages, "L'art de faire face à ses peurs") pre-rendered at 2x DPI as JPEGs (12 MB total, stored in /app/backend/private_files/pages/)
+- [x] Backend: PyMuPDF + Pillow — server-side diagonal watermark (user email) applied dynamically at request time
+- [x] Backend endpoints: GET /api/member/book/info, GET /api/member/book/page/{n}.jpg (auth + book_access required, 401/403 enforced)
+- [x] Backend endpoint: PUT /api/admin/members/{id}/book-access (toggle)
+- [x] User model: added `book_access` boolean (default False)
+- [x] Frontend: /membre/livre page (BookReaderPage.js) with:
+  - Prev/Next chevron buttons, page slider + numeric input, keyboard arrows
+  - Format 12×20 cm (aspect ratio 3/5, exact book dimensions)
+  - Anti-scraping: user-select:none, oncontextmenu prevented, ondragstart prevented, onCopy/Cut prevented, keyboard shortcuts blocked (Ctrl+S/P/C/U/A + F12 + PrintScreen)
+  - Anti-print: CSS @media print hides content + beforeprint listener
+  - Client-side + server-side watermark overlay (double protection)
+  - Blob URL (not file URL) — no direct link exposed
+- [x] Member dashboard: "Mon livre" gold tile visible ONLY if book_access enabled, links to /membre/livre
+- [x] Admin dashboard: create form checkbox + per-member toggle button for book access
+
+### SEO / Marketing
+- [x] Typos fixed: "À propos" + "Témoignages" everywhere
+- [x] OVH .htaccess with proper React Router rewrite + HTTPS + www redirect + cache/gzip
 - [x] SEO: react-helmet-async with dynamic per-page meta (title, description, OG, Twitter)
-- [x] SEO: JSON-LD structured data (Person, ProfessionalService, Article schemas)
+- [x] SEO: JSON-LD structured data (Person, ProfessionalService, Article)
 - [x] SEO: sitemap.xml + robots.txt
-- [x] Exit-intent popup (desktop mouse-leave + mobile 45s timer) capturing leads via /api/leads with profile_type='exit_intent', 7-day localStorage cooldown
+- [x] Custom Open Graph image 1200×630 generated with Gemini Nano Banana
+- [x] Exit-intent popup (desktop mouse-leave + mobile 45s timer) capturing leads via /api/leads
+- [x] PHP OVH email endpoints (leads, contact, webinar) with admin notification + auto-reply to visitor
+- [x] Facebook + TikTok social icons in footer
+
+### Blog
+- [x] Static blog articles (blogArticles.js) — works without backend on OVH deployment
 
 ## Backlog
 ### P0 (Before Launch)

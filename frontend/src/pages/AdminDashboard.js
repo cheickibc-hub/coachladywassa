@@ -23,7 +23,7 @@ export default function AdminDashboard() {
   const [contacts, setContacts] = useState([]);
   const [webinarRegs, setWebinarRegs] = useState([]);
   const [showCreateForm, setShowCreateForm] = useState(false);
-  const [createForm, setCreateForm] = useState({ name: "", email: "", password: "", enrolled_formations: [] });
+  const [createForm, setCreateForm] = useState({ name: "", email: "", password: "", enrolled_formations: [], book_access: false });
   const [createError, setCreateError] = useState("");
   const [createLoading, setCreateLoading] = useState(false);
   const [resetPwdFor, setResetPwdFor] = useState(null);
@@ -83,13 +83,22 @@ export default function AdminDashboard() {
     } catch (e) { console.error(e); }
   };
 
+  const toggleBookAccess = async (userId, newValue) => {
+    try {
+      await axios.put(`${API}/api/admin/members/${userId}/book-access`, { book_access: newValue }, { withCredentials: true });
+      fetchMembers();
+    } catch (e) {
+      alert(e.response?.data?.detail || "Erreur");
+    }
+  };
+
   const createMember = async (e) => {
     e.preventDefault();
     setCreateError("");
     setCreateLoading(true);
     try {
       await axios.post(`${API}/api/admin/members`, createForm, { withCredentials: true });
-      setCreateForm({ name: "", email: "", password: "", enrolled_formations: [] });
+      setCreateForm({ name: "", email: "", password: "", enrolled_formations: [], book_access: false });
       setShowCreateForm(false);
       fetchMembers();
       fetchStats();
@@ -294,6 +303,27 @@ export default function AdminDashboard() {
                     })}
                   </div>
                 </div>
+
+                {/* Book Access toggle */}
+                <div className="mb-4">
+                  <label className="flex items-center gap-3 cursor-pointer p-3 rounded-xl border border-[#D4AF37]/30 bg-[#D4AF37]/5 hover:bg-[#D4AF37]/10 transition-colors">
+                    <input
+                      type="checkbox"
+                      data-testid="create-book-access"
+                      checked={createForm.book_access}
+                      onChange={(e) => setCreateForm({ ...createForm, book_access: e.target.checked })}
+                      className="w-5 h-5 accent-[#D4AF37]"
+                    />
+                    <div>
+                      <p className="text-sm font-semibold text-[#0B3A5A]">
+                        Accès au livre en ligne
+                      </p>
+                      <p className="text-xs text-[#4A4A4A]">
+                        « L'art de faire face à ses peurs » — lecture protégée dans l'espace membre
+                      </p>
+                    </div>
+                  </label>
+                </div>
                 {createError && (
                   <p data-testid="create-member-error" className="text-sm text-red-600 mb-3">{createError}</p>
                 )}
@@ -385,6 +415,19 @@ export default function AdminDashboard() {
                           </button>
                         );
                       })}
+                      {/* Book access toggle */}
+                      <button
+                        data-testid={`admin-book-access-${m._id}`}
+                        onClick={() => toggleBookAccess(m._id, !m.book_access)}
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors border ${
+                          m.book_access
+                            ? "bg-[#D4AF37] text-[#0B1D2E] border-[#D4AF37]"
+                            : "bg-transparent text-[#D4AF37] border-[#D4AF37]/40 hover:bg-[#D4AF37]/10"
+                        }`}
+                      >
+                        {m.book_access ? <Check className="w-3 h-3" /> : <X className="w-3 h-3 opacity-60" />}
+                        📖 Livre en ligne
+                      </button>
                     </div>
                   </div>
                 ))}
