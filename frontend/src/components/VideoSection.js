@@ -3,17 +3,19 @@ import { Play, Crown } from "lucide-react";
 
 const VIDEOS = [
   {
-    title: "Programme Voix de Reine — Extrait 1",
+    title: "Voyage de Reconstruction Consciente : Explorer Nos Automatismes",
     description:
-      "Découvrez un extrait exclusif du programme phare \"Voix de Reine\" avec Coach Lady Wassa : reprogrammation mentale et transformation intérieure.",
-    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/09sd84g5_7a5c085a8ba44fde9c89b9252fb2d5f2.mov",
+      "Première partie du programme \"Voix de Reine\". Explorez le concept des automatismes inconscients et comment les reprogrammer.",
+    embedUrl: "https://www.loom.com/embed/55be99c409224cb6937ab8689ed0e66f",
+    duration: "34 min",
     program: "Voix de Reine",
   },
   {
-    title: "Programme Voix de Reine — Extrait 2",
+    title: "Oser être soi-même : les quatre étapes essentielles",
     description:
-      "Un deuxième extrait du programme \"Voix de Reine\" : les clés pour retrouver votre pouvoir intérieur et vivre pleinement votre grandeur.",
-    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/qahjrr3a_IMG_1768.mov",
+      "Les 4 étapes pour oser être soi-même : la clarté, la confrontation, le courage et la cohérence.",
+    embedUrl: "https://www.loom.com/embed/14bdae734ec54978a9f674e68f8a4d5c",
+    duration: "16 min",
     program: "Voix de Reine",
   },
 ];
@@ -63,13 +65,15 @@ export default function VideoSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
             >
-              <div className="relative aspect-video bg-black">
-                <video
-                  src={video.url}
-                  controls
-                  preload="metadata"
-                  playsInline
-                  className="w-full h-full object-contain"
+              <div className="relative aspect-video">
+                <iframe
+                  src={video.embedUrl}
+                  title={video.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                  loading="lazy"
                 />
               </div>
               <div className="p-6">
@@ -79,7 +83,7 @@ export default function VideoSection() {
                     {video.program}
                   </span>
                   <span className="flex items-center gap-1 text-xs text-white/40">
-                    <Play className="w-3 h-3" /> Vidéo exclusive
+                    <Play className="w-3 h-3" /> {video.duration}
                   </span>
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2 leading-snug" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
