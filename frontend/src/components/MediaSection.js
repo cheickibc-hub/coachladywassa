@@ -1,5 +1,20 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Play, Mic } from "lucide-react";
+import { ExternalLink, Play, Mic, Video } from "lucide-react";
+
+const EVENT_VIDEOS = [
+  {
+    title: "Interview média — Coach Lady Wassa",
+    description:
+      "Extrait d'une interview lors d'un événement grand public à Ouagadougou.",
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/09sd84g5_7a5c085a8ba44fde9c89b9252fb2d5f2.mov",
+  },
+  {
+    title: "Conférence — Coach Lady Wassa sur scène",
+    description:
+      "Extrait d'une conférence publique animée par Coach Lady Wassa devant un public engagé.",
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/qahjrr3a_IMG_1768.mov",
+  },
+];
 
 const PRESS_ARTICLES = [
   {
@@ -74,6 +89,55 @@ export default function MediaSection() {
             ))}
           </div>
         </div>
+
+        {/* Event & Interview Videos */}
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h3
+            className="text-xl md:text-2xl font-bold text-[#0B3A5A] mb-6 flex items-center gap-2"
+            style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+          >
+            <Video className="w-6 h-6 text-[#D4AF37]" />
+            Interviews &amp; Événements
+          </h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            {EVENT_VIDEOS.map((video, i) => (
+              <motion.div
+                key={i}
+                data-testid={`media-event-video-${i}`}
+                className="rounded-2xl overflow-hidden bg-[#0B1D2E] border border-black/5 shadow-lg hover:shadow-xl transition-shadow"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.15 }}
+              >
+                <div className="relative aspect-video bg-black">
+                  <video
+                    src={video.url}
+                    controls
+                    preload="metadata"
+                    playsInline
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="p-5 bg-white">
+                  <p className="text-xs text-[#D4AF37] font-semibold uppercase mb-1">
+                    Vidéo événement
+                  </p>
+                  <h4 className="text-base font-bold text-[#0B3A5A] leading-snug mb-1">
+                    {video.title}
+                  </h4>
+                  <p className="text-sm text-[#4A4A4A]">{video.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* TV Appearances */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
