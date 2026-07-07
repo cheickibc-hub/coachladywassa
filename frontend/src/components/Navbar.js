@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { label: "Quiz", href: "#quiz" },
   { label: "Webinaire", href: "#webinar" },
   { label: "Livre", href: "#book" },
+  { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -117,6 +118,14 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
+            <a
+              href="/connexion"
+              onClick={() => setMenuOpen(false)}
+              data-testid="nav-mobile-member"
+              className="text-sm text-[#D4AF37] hover:text-[#C49F27] py-2 font-semibold flex items-center gap-2"
+            >
+              Espace Membre
+            </a>
             <Button
               onClick={() => { setMenuOpen(false); openWhatsApp(WHATSAPP_MSG); }}
               className="mt-2 w-full bg-[#0B3A5A] hover:bg-[#145A8A] text-white rounded-full text-sm"
