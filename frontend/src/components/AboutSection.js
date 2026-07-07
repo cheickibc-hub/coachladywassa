@@ -52,7 +52,7 @@ export default function AboutSection() {
                 data-testid="about-video"
                 src="https://customer-assets.emergentagent.com/job_be26550a-7109-49a1-b5f6-ce556eeedf7e/artifacts/14euo2e9_IMG_7243.MP4"
                 controls
-                poster="https://images.pexels.com/photos/9228390/pexels-photo-9228390.jpeg?auto=compress&cs=tinysrgb&w=600"
+                poster="https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/orkoyz8r_image.png"
                 className="w-full aspect-video object-cover"
                 preload="metadata"
               />

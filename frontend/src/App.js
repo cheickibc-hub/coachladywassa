@@ -37,12 +37,12 @@ const HomePage = () => {
       <SEO />
       <Navbar />
       <HeroSection />
+      <BookSection />
+      <TestimonialsSection />
       <ProblemSection />
       <AboutSection />
       <ServicesSection />
       <FormationsSection />
-      <BookSection />
-      <TestimonialsSection />
       <VideoSection />
       <QuizSection apiUrl={API} />
       <WebinarSection apiUrl={API} />

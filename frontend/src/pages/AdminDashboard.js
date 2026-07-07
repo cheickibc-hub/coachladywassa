@@ -170,6 +170,10 @@ export default function AdminDashboard() {
             <span className="text-xs text-[#D4AF37] font-semibold uppercase tracking-wider">Administration</span>
           </div>
           <div className="flex items-center gap-4">
+            <Link to="/membre/livre" data-testid="admin-preview-book" className="hidden md:inline-flex items-center gap-2 bg-[#D4AF37] hover:bg-[#C49F27] text-[#0B1D2E] rounded-full px-4 py-2 text-xs font-bold transition-colors">
+              <BookOpen className="w-4 h-4" />
+              Voir le livre
+            </Link>
             <span className="text-sm text-white/70">{user.name}</span>
             <Button data-testid="admin-logout-btn" variant="outline" size="sm" onClick={() => { logout(); navigate("/"); }}
               className="rounded-full border-white/20 text-white hover:bg-white/10 text-xs">
