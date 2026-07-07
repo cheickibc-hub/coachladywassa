@@ -23,9 +23,16 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Text colors adapt : top on dark hero = white text, scrolled on light = dark text
+  const linkColor = scrolled
+    ? "text-[#4A4A4A] hover:text-[#0B3A5A]"
+    : "text-white/90 hover:text-[#D4AF37]";
+  const mobileIconColor = scrolled ? "text-[#0B3A5A]" : "text-white";
 
   return (
     <nav
@@ -41,7 +48,9 @@ export default function Navbar() {
             <img
               src="/logo-mindset-coaching.jpg"
               alt="Cabinet Mindset Coaching"
-              className="h-10 md:h-12 w-auto"
+              className={`h-10 md:h-12 w-auto transition-all duration-300 ${
+                scrolled ? "" : "bg-white rounded-lg p-1 shadow-md"
+              }`}
             />
           </a>
 
@@ -52,7 +61,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 data-testid={`nav-link-${link.href.slice(1)}`}
-                className="text-sm text-[#4A4A4A] hover:text-[#0B3A5A] transition-colors font-medium"
+                className={`text-sm transition-colors font-medium ${linkColor}`}
               >
                 {link.label}
               </a>
@@ -61,7 +70,11 @@ export default function Navbar() {
               <Button
                 data-testid="nav-cta-member"
                 variant="outline"
-                className="border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#0B3A5A] rounded-full px-5 text-sm"
+                className={`rounded-full px-5 text-sm transition-colors ${
+                  scrolled
+                    ? "border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#0B3A5A]"
+                    : "border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#0B1D2E] bg-transparent"
+                }`}
               >
                 Espace Membre
               </Button>
@@ -69,7 +82,11 @@ export default function Navbar() {
             <Button
               data-testid="nav-cta-whatsapp"
               onClick={() => openWhatsApp(WHATSAPP_MSG)}
-              className="bg-[#0B3A5A] hover:bg-[#145A8A] text-white rounded-full px-6 text-sm"
+              className={`rounded-full px-6 text-sm font-semibold ${
+                scrolled
+                  ? "bg-[#0B3A5A] hover:bg-[#145A8A] text-white"
+                  : "bg-[#D4AF37] hover:bg-[#C49F27] text-[#0B1D2E]"
+              }`}
             >
               Contactez-moi
             </Button>
@@ -78,7 +95,7 @@ export default function Navbar() {
           {/* Mobile menu toggle */}
           <button
             data-testid="nav-mobile-toggle"
-            className="lg:hidden p-2 text-[#0B3A5A]"
+            className={`lg:hidden p-2 ${mobileIconColor}`}
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
