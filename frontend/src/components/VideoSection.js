@@ -1,21 +1,19 @@
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, Crown } from "lucide-react";
 
 const VIDEOS = [
   {
-    title: "Voyage de Reconstruction Consciente : Explorer Nos Automatismes",
-    description: "Première partie du programme \"Voix des Reines\". Explorez le concept des automatismes inconscients et comment les reprogrammer.",
-    embedUrl: "https://www.loom.com/embed/55be99c409224cb6937ab8689ed0e66f",
-    thumbnail: "https://cdn.loom.com/sessions/thumbnails/55be99c409224cb6937ab8689ed0e66f-18e4bc18de7748ed.jpg",
-    duration: "34 min",
+    title: "Programme Voix de Reine — Extrait 1",
+    description:
+      "Découvrez un extrait exclusif du programme phare \"Voix de Reine\" avec Coach Lady Wassa : reprogrammation mentale et transformation intérieure.",
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/09sd84g5_7a5c085a8ba44fde9c89b9252fb2d5f2.mov",
     program: "Voix de Reine",
   },
   {
-    title: "Oser être soi-même : les quatre étapes essentielles",
-    description: "Les 4 étapes pour oser être soi-même : la clarté, la confrontation, le courage et la cohérence.",
-    embedUrl: "https://www.loom.com/embed/14bdae734ec54978a9f674e68f8a4d5c",
-    thumbnail: "https://cdn.loom.com/sessions/thumbnails/14bdae734ec54978a9f674e68f8a4d5c-41798314cf609f39.jpg",
-    duration: "16 min",
+    title: "Programme Voix de Reine — Extrait 2",
+    description:
+      "Un deuxième extrait du programme \"Voix de Reine\" : les clés pour retrouver votre pouvoir intérieur et vivre pleinement votre grandeur.",
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/qahjrr3a_IMG_1768.mov",
     program: "Voix de Reine",
   },
 ];
@@ -36,18 +34,21 @@ export default function VideoSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-xs uppercase tracking-[0.2em] text-[#D4AF37] font-semibold">
-            Extraits du Programme
-          </span>
+          <div className="inline-flex items-center gap-2 bg-[#D4AF37]/15 rounded-full px-4 py-1.5 mb-4">
+            <Crown className="w-4 h-4 text-[#D4AF37]" />
+            <span className="text-xs uppercase tracking-[0.2em] text-[#D4AF37] font-semibold">
+              Vidéos — Programme Voix de Reine
+            </span>
+          </div>
           <h2
-            className="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-3 mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mt-3 mb-4"
             style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
           >
-            Programme Voix de Reine
+            Programme <span className="text-[#D4AF37]">Voix de Reine</span>
           </h2>
           <p className="text-base text-white/60 max-w-2xl mx-auto">
-            Découvrez des extraits de notre programme phare de reprogrammation mentale
-            et développement personnel avec Coach Lady Wassa.
+            Découvrez des extraits vidéo exclusifs du programme phare de reprogrammation
+            mentale et développement personnel avec Coach Lady Wassa.
           </p>
         </motion.div>
 
@@ -56,33 +57,32 @@ export default function VideoSection() {
             <motion.div
               key={i}
               data-testid={`video-card-${i}`}
-              className="rounded-2xl overflow-hidden bg-white/5 border border-white/10"
+              className="rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-[#D4AF37]/40 transition-colors"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
             >
-              <div className="relative aspect-video">
-                <iframe
-                  src={video.embedUrl}
-                  title={video.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
-                  loading="lazy"
+              <div className="relative aspect-video bg-black">
+                <video
+                  src={video.url}
+                  controls
+                  preload="metadata"
+                  playsInline
+                  className="w-full h-full object-contain"
                 />
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="text-xs font-semibold text-[#D4AF37] bg-[#D4AF37]/10 px-3 py-1 rounded-full">
+                  <span className="text-xs font-semibold text-[#D4AF37] bg-[#D4AF37]/10 px-3 py-1 rounded-full flex items-center gap-1">
+                    <Crown className="w-3 h-3" />
                     {video.program}
                   </span>
                   <span className="flex items-center gap-1 text-xs text-white/40">
-                    <Play className="w-3 h-3" /> {video.duration}
+                    <Play className="w-3 h-3" /> Vidéo exclusive
                   </span>
                 </div>
-                <h3 className="text-base font-bold text-white mb-2 leading-snug">
+                <h3 className="text-lg font-bold text-white mb-2 leading-snug" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                   {video.title}
                 </h3>
                 <p className="text-sm text-white/60 leading-relaxed">

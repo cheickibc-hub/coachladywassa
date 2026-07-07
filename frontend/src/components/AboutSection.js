@@ -2,9 +2,8 @@ import { motion } from "framer-motion";
 import { Check, Brain, Heart, Zap } from "lucide-react";
 
 const CREDENTIALS = [
-  "MasterCoach ICI certifié",
+  "MasterCoach ICI certifiée",
   "Life & Corporate Coach",
-  "Cabinet Mindset Coaching",
   "Auteure du livre \"L'art de faire face à ses peurs\"",
   "100+ clients transformés",
   "Créatrice du programme \"Voix de Reine\"",
@@ -37,15 +36,16 @@ export default function AboutSection() {
       className="py-24 md:py-32 px-6 md:px-12 lg:px-24"
       style={{ background: "#FAF9F6" }}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Story Section */}
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center mb-24">
-          {/* Video / Image */}
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start mb-24">
+          {/* Video */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="md:sticky md:top-24"
           >
             <div className="relative rounded-2xl overflow-hidden shadow-xl">
               <video
@@ -60,6 +60,19 @@ export default function AboutSection() {
                 Passage RTB TV
               </div>
             </div>
+
+            {/* Credentials */}
+            <div className="mt-8 space-y-3 bg-white rounded-2xl p-6 shadow-sm border border-black/5">
+              <p className="text-xs uppercase tracking-[0.2em] text-[#D4AF37] font-semibold mb-3">
+                Certifications
+              </p>
+              {CREDENTIALS.map((cred, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-[#D4AF37] mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-[#1A1A1A] font-medium">{cred}</span>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
           {/* Story */}
@@ -73,35 +86,49 @@ export default function AboutSection() {
               Mon Parcours
             </span>
             <h2
-              className="text-3xl sm:text-4xl font-bold text-[#0B3A5A] tracking-tight mt-3 mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0B3A5A] tracking-tight mt-3 mb-8 leading-tight"
               style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
             >
-              De la peur paralysante à coach en neurosciences
+              Mon parcours avec la <span className="text-[#D4AF37]">peur</span>
             </h2>
-            <div className="space-y-4 text-[#4A4A4A] leading-relaxed">
+            <div className="space-y-4 text-[#4A4A4A] leading-relaxed text-base">
               <p>
-                Il y a 10 ans, j'avais une peur bleue de parler en public. À l'université,
-                présenter un projet devant la classe me paralysait complètement.
+                Pendant de nombreuses années, la peur a dirigé ma vie sans que je m'en rende compte.
               </p>
               <p>
-                Puis j'ai découvert les neurosciences et compris comment mon cerveau
-                fonctionnait. J'ai appris que la peur n'était pas une faiblesse, mais une
-                information de mon amygdale.
+                Depuis mon enfance, j'ai grandi avec des peurs invisibles : la peur du jugement, la peur de l'échec, la peur de ne pas être à la hauteur, la peur de décevoir et parfois même la peur de réussir. Comme beaucoup de personnes, j'ai laissé ces peurs influencer mes décisions, limiter mes choix et freiner mon potentiel.
               </p>
               <p>
-                J'ai appliqué des techniques basées sur la neuroplasticité et ma vie a changé.
-                Aujourd'hui, j'aide plus de 100 clients à transformer leur relation au stress et à la peur.
+                À l'école, à l'université et même dans ma vie professionnelle, la peur me poussait souvent à douter de moi-même. Malgré mes diplômes, mes compétences et mes nombreuses certifications, je me sentais parfois insuffisante. Je passais mon temps à chercher encore plus de formations alors que ce dont j'avais réellement besoin était de croire davantage en moi.
               </p>
-            </div>
-
-            {/* Credentials */}
-            <div className="mt-8 space-y-3">
-              {CREDENTIALS.map((cred, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-[#D4AF37] mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-[#1A1A1A] font-medium">{cred}</span>
-                </div>
-              ))}
+              <p>
+                La peur du regard des autres m'a également enfermée dans certaines situations qui ne correspondaient pas à mes valeurs. Elle m'a empêchée de prendre certaines opportunités, de montrer pleinement qui j'étais et d'exprimer tout mon potentiel.
+              </p>
+              <p className="font-semibold text-[#0B3A5A] text-lg italic border-l-4 border-[#D4AF37] pl-4">
+                Puis un jour, j'ai décidé de ne plus subir la peur, mais de l'étudier.
+              </p>
+              <p>
+                J'ai commencé à comprendre comment le cerveau crée les peurs, comment nos expériences, notre éducation, nos croyances et nos blessures émotionnelles programment nos comportements. J'ai découvert que beaucoup de nos limites ne sont pas réelles : elles sont simplement le résultat de programmes mentaux installés depuis des années.
+              </p>
+              <p>Cette prise de conscience a changé ma vie.</p>
+              <p>
+                J'ai alors entrepris un profond travail de reprogrammation mentale à travers les neurosciences, la PNL, le coaching et le développement personnel. Progressivement, j'ai remplacé le doute par la confiance, l'hésitation par l'action et la peur par la foi en mes capacités.
+              </p>
+              <p>
+                Aujourd'hui, ma mission est d'aider les femmes, les hommes, les étudiants, les leaders et les entrepreneurs à faire le même chemin.
+              </p>
+              <p>
+                Parce que je sais ce que la peur peut coûter : des opportunités perdues, des rêves abandonnés, des talents cachés et des années de potentiel inexploité.
+              </p>
+              <p>
+                Mais je sais aussi qu'une fois comprise et maîtrisée, la peur peut devenir un moteur extraordinaire de transformation.
+              </p>
+              <p>
+                C'est pourquoi j'accompagne aujourd'hui celles et ceux qui souhaitent reprendre le contrôle de leur cerveau, reprogrammer leurs schémas limitants, renforcer leur confiance en eux et devenir la meilleure version d'eux-mêmes.
+              </p>
+              <p className="font-semibold text-[#0B3A5A] text-lg mt-6 border-l-4 border-[#D4AF37] pl-4">
+                Mon histoire n'est pas celle d'une femme qui n'a jamais eu peur. C'est l'histoire d'une femme qui a appris à avancer malgré la peur et qui aide désormais les autres à faire de même.
+              </p>
             </div>
           </motion.div>
         </div>

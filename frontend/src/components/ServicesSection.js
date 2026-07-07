@@ -69,27 +69,7 @@ export default function ServicesSection() {
             Cabinet Mindset Coaching
           </h2>
           <p className="text-base text-[#4A4A4A] max-w-2xl mx-auto">
-            Life &amp; Corporate Coach &bull; MasterCoach ICI certifié
-          </p>
-        </motion.div>
-
-        <motion.div
-          className="bg-[#0B3A5A] rounded-3xl px-8 py-10 md:px-14 md:py-12 text-white max-w-4xl mx-auto mb-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <p className="text-xs uppercase tracking-[0.2em] text-[#D4AF37] font-semibold mb-3">
-            Notre Mission
-          </p>
-          <p className="text-base md:text-lg leading-relaxed opacity-90">
-            Vous accompagner à révéler le meilleur de votre personnalité afin de bâtir
-            une vie épanouie, de qualité et surtout alignée, en exploitant pleinement
-            les incroyables potentiels cachés dans votre cerveau.
-          </p>
-          <p className="text-sm text-[#D4AF37] mt-4 italic font-medium">
-            "Votre cerveau, votre meilleur allié : transformez votre mindset, transformez votre vie."
+            Life &amp; Corporate Coach &bull; MasterCoach ICI certifiée
           </p>
         </motion.div>
 

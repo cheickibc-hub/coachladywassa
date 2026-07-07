@@ -1,34 +1,33 @@
 import { motion } from "framer-motion";
-import { Star, Quote, Volume2 } from "lucide-react";
+import { Star, Quote, Volume2, BookOpen, Crown } from "lucide-react";
 
-const AUDIO_TESTIMONIALS = [
+// AUDIOS classés par catégorie selon instructions du 24/04/2026 :
+// - Livre : Audio 1, 2, 3, 6
+// - Voix de Reine : Audio 4
+// - Doublons supprimés : Audio 5 (= Audio 1), Audio 7 (= Audio 3)
+const BOOK_AUDIOS = [
   {
     url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/gxan6rt5_WhatsApp%20Audio%202026-04-16%20at%2009.51.26.ogg",
-    name: "Témoignage audio 1",
+    name: "Témoignage livre 1",
   },
   {
     url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/kd8s9k7x_WhatsApp%20Audio%202026-04-16%20at%2009.57.30.ogg",
-    name: "Témoignage audio 2",
+    name: "Témoignage livre 2",
   },
   {
     url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/vm6u6uyo_WhatsApp%20Audio%202026-04-22%20at%2012.06.43%20%281%29.ogg",
-    name: "Témoignage audio 3",
-  },
-  {
-    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/fjstjmj0_WhatsApp%20Audio%202026-04-22%20at%2012.19.25.ogg",
-    name: "Témoignage audio 4",
-  },
-  {
-    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/anqwjeex_WhatsApp%20Audio%202026-04-22%20at%2012.18.50.ogg",
-    name: "Témoignage audio 5",
+    name: "Témoignage livre 3",
   },
   {
     url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/phtehnii_WhatsApp%20Audio%202026-04-22%20at%2012.17.57.ogg",
-    name: "Témoignage audio 6",
+    name: "Témoignage livre 4",
   },
+];
+
+const VOIX_DE_REINE_AUDIOS = [
   {
-    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/ga4svrfe_WhatsApp%20Audio%202026-04-22%20at%2012.06.43.ogg",
-    name: "Témoignage audio 7",
+    url: "https://customer-assets.emergentagent.com/job_brain-mastery/artifacts/fjstjmj0_WhatsApp%20Audio%202026-04-22%20at%2012.19.25.ogg",
+    name: "Témoignage Voix de Reine 1",
   },
 ];
 
@@ -37,42 +36,49 @@ const WRITTEN_TESTIMONIALS = [
     name: "Ouedraogo Safiatou",
     title: "Participante Voix de Reine",
     result: "Prise de conscience transformatrice",
-    quote: "Vous rencontrer est une bénédiction dans ma vie. Je sais que je vais réussir, j'ai une grande mission, je suis une grande personnalité et je vais y arriver grâce à vous.",
+    quote:
+      "Vous rencontrer est une bénédiction dans ma vie. Je sais que je vais réussir, j'ai une grande mission, je suis une grande personnalité et je vais y arriver grâce à vous.",
     rating: 5,
   },
+  // Madina Nikiema : conservée UNE SEULE FOIS (doublon vidéo supprimé)
   {
     name: "Madina Nikiema",
     title: "Communicante, Maîtresse de cérémonie - Ouagadougou",
     result: "Dépassement de ses limites",
-    quote: "Ce programme s'il n'existait pas fallait le créer. Il vous permettra de dépasser vos limites, de devenir la meilleure version de vous ! D'ici 2026, mes amis et parents ne me reconnaîtront pas.",
+    quote:
+      "Ce programme s'il n'existait pas fallait le créer. Il vous permettra de dépasser vos limites, de devenir la meilleure version de vous ! D'ici 2026, mes amis et parents ne me reconnaîtront pas.",
     rating: 5,
   },
   {
     name: "Ouedraogo Djamila",
     title: "Participante Voix de Reine",
     result: "Renaissance complète",
-    quote: "Ce programme n'est pas un simple coaching mais une transformation de vie, c'est tout simplement de la renaissance. Il t'amène à changer complètement ta vie sur tous les plans.",
+    quote:
+      "Ce programme n'est pas un simple coaching mais une transformation de vie, c'est tout simplement de la renaissance. Il t'amène à changer complètement ta vie sur tous les plans.",
     rating: 5,
   },
   {
     name: "Sawadogo Adjaratou",
     title: "Participante Voix de Reine",
     result: "Force et confiance retrouvées",
-    quote: "Coach Lady Wassa, la spécialiste du cerveau, mon soutien, mon professeur, mon mentor, ma force, ma sœur. Tu es ma force invisible, ma force tranquille qui guide chacun de mes pas.",
+    quote:
+      "Coach Lady Wassa, la spécialiste du cerveau, mon soutien, mon professeur, mon mentor, ma force, ma sœur. Tu es ma force invisible, ma force tranquille qui guide chacun de mes pas.",
     rating: 5,
   },
   {
     name: "Carine Ohg",
     title: "Participante Voix de Reine",
     result: "Libérée du besoin de validation",
-    quote: "J'attendais cette voix extérieure pour réaliser que je vivais constamment dans l'aliénation, dans le souci de plaire aux autres. Maintenant, je n'ai plus besoin de me justifier pour qu'on me valide.",
+    quote:
+      "J'attendais cette voix extérieure pour réaliser que je vivais constamment dans l'aliénation, dans le souci de plaire aux autres. Maintenant, je n'ai plus besoin de me justifier pour qu'on me valide.",
     rating: 5,
   },
   {
     name: "Mlle Yogo Huguette",
     title: "Participante Voix de Reine",
     result: "Programme Voix de Reine : une pépite",
-    quote: "Je suis tellement contente d'être dans ce programme. J'imagine qu'à la fin des 1 mois je serai une meilleure version de moi. C'est ton meilleur investissement.",
+    quote:
+      "Je suis tellement contente d'être dans ce programme. J'imagine qu'à la fin des 1 mois je serai une meilleure version de moi. C'est ton meilleur investissement.",
     rating: 5,
   },
 ];
@@ -91,6 +97,21 @@ const WHATSAPP_SCREENSHOTS = [
   { src: "/temoignage-11.png", alt: "Témoignage client 11" },
   { src: "/temoignage-12.png", alt: "Témoignage client 12" },
 ];
+
+function AudioCard({ audio, index, testIdPrefix }) {
+  return (
+    <div
+      data-testid={`${testIdPrefix}-${index}`}
+      className="bg-[#FAF9F6] rounded-xl p-4 border border-black/5"
+    >
+      <p className="text-xs text-[#D4AF37] font-semibold mb-2">{audio.name}</p>
+      <audio controls className="w-full h-10" preload="none">
+        <source src={audio.url} type="audio/ogg" />
+        Votre navigateur ne supporte pas l'audio.
+      </audio>
+    </div>
+  );
+}
 
 export default function TestimonialsSection() {
   return (
@@ -124,48 +145,79 @@ export default function TestimonialsSection() {
         </motion.div>
 
         {/* WhatsApp Screenshots */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {WHATSAPP_SCREENSHOTS.map((img, i) => (
-            <motion.div
-              key={i}
-              className="testimonial-screenshot glass-card rounded-2xl p-3"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-            >
-              <img
-                data-testid={`testimonial-screenshot-${i + 1}`}
-                src={img.src}
-                alt={img.alt}
-                className="w-full rounded-xl"
-                loading="lazy"
-              />
-            </motion.div>
-          ))}
+        <div className="mb-16">
+          <h3 className="text-xl font-bold text-[#0B3A5A] mb-6 text-center" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+            <Quote className="inline-block w-5 h-5 mr-2 text-[#D4AF37]" />
+            Retours WhatsApp de nos clients
+          </h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {WHATSAPP_SCREENSHOTS.map((img, i) => (
+              <motion.div
+                key={i}
+                className="testimonial-screenshot glass-card rounded-2xl p-3"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+              >
+                <img
+                  data-testid={`testimonial-screenshot-${i + 1}`}
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full rounded-xl"
+                  loading="lazy"
+                />
+              </motion.div>
+            ))}
+          </div>
         </div>
 
-        {/* Audio Testimonials */}
+        {/* Audio Testimonials — Book */}
         <motion.div
-          className="mb-16"
+          className="mb-12 bg-[#FAF9F6] rounded-3xl p-8 md:p-12 border-l-4 border-[#D4AF37]"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
           <h3
-            className="text-xl font-bold text-[#0B3A5A] mb-6 text-center"
+            className="text-xl md:text-2xl font-bold text-[#0B3A5A] mb-6"
             style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
           >
-            <Volume2 className="inline-block w-5 h-5 mr-2 text-[#D4AF37]" />
-            Témoignages Audio
+            <BookOpen className="inline-block w-6 h-6 mr-2 text-[#D4AF37]" />
+            Audios — Témoignages Livre
+            <span className="ml-3 text-xs uppercase tracking-[0.15em] text-[#4A4A4A] font-medium">
+              « L'art de faire face à ses peurs »
+            </span>
           </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {AUDIO_TESTIMONIALS.map((audio, i) => (
+          <div className="grid md:grid-cols-2 gap-4">
+            {BOOK_AUDIOS.map((audio, i) => (
+              <AudioCard key={i} audio={audio} index={i} testIdPrefix="audio-book" />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Audio Testimonials — Voix de Reine */}
+        <motion.div
+          className="mb-16 bg-[#0B1D2E] rounded-3xl p-8 md:p-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h3
+            className="text-xl md:text-2xl font-bold text-white mb-6"
+            style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+          >
+            <Crown className="inline-block w-6 h-6 mr-2 text-[#D4AF37]" />
+            Audios — Programme <span className="text-[#D4AF37]">Voix de Reine</span>
+          </h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            {VOIX_DE_REINE_AUDIOS.map((audio, i) => (
               <div
                 key={i}
-                data-testid={`audio-testimonial-${i}`}
-                className="bg-[#FAF9F6] rounded-xl p-4 border border-black/5"
+                data-testid={`audio-voix-de-reine-${i}`}
+                className="bg-white/5 rounded-xl p-4 border border-white/10"
               >
                 <p className="text-xs text-[#D4AF37] font-semibold mb-2">{audio.name}</p>
                 <audio controls className="w-full h-10" preload="none">
@@ -175,6 +227,9 @@ export default function TestimonialsSection() {
               </div>
             ))}
           </div>
+          <p className="text-xs text-white/40 italic mt-4">
+            D'autres témoignages audio du programme « Voix de Reine » seront ajoutés prochainement.
+          </p>
         </motion.div>
 
         {/* Written Testimonials */}
@@ -241,13 +296,13 @@ export default function TestimonialsSection() {
           <div className="rounded-2xl overflow-hidden shadow-lg">
             <img
               src="/temoignage-13.png"
-              alt="Journée Nationale Positivité"
+              alt="Journée de dédicace du livre de Coach Lady Wassa"
               className="w-full object-cover aspect-square"
               loading="lazy"
             />
             <div className="bg-white p-4">
-              <p className="text-sm font-bold text-[#0B3A5A]">Journée Nationale Positivité</p>
-              <p className="text-xs text-[#4A4A4A]">Événement communautaire avec Coach Lady Wassa</p>
+              <p className="text-sm font-bold text-[#0B3A5A]">Journée de dédicace du livre</p>
+              <p className="text-xs text-[#4A4A4A]">« L'art de faire face à ses peurs »</p>
             </div>
           </div>
         </motion.div>

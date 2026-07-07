@@ -38,13 +38,13 @@ const HomePage = () => {
       <HeroSection />
       <ProblemSection />
       <AboutSection />
-      <VideoSection />
-      <TestimonialsSection />
       <ServicesSection />
       <FormationsSection />
+      <BookSection />
+      <TestimonialsSection />
+      <VideoSection />
       <QuizSection apiUrl={API} />
       <WebinarSection apiUrl={API} />
-      <BookSection />
       <MediaSection />
       <BlogSection />
       <FAQSection />
