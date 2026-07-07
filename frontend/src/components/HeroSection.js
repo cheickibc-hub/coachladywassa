@@ -42,12 +42,8 @@ export default function HeroSection() {
                 <p className="text-sm font-bold text-[#0B3A5A]">MasterCoach ICI certifiée</p>
                 <p className="text-xs text-[#4A4A4A]">Auteure &amp; Life Coach</p>
               </div>
-              {/* RTB badge */}
-              <div className="absolute -top-2 -right-2 bg-[#D4AF37] text-[#0B1D2E] rounded-full px-4 py-2 text-xs font-bold shadow-lg">
-                Vu à la RTB TV
-              </div>
               {/* Facebook badge */}
-              <div className="absolute top-16 -right-2 bg-[#1877F2] text-white rounded-full px-4 py-2 text-xs font-bold shadow-lg">
+              <div className="absolute top-4 -right-2 bg-[#1877F2] text-white rounded-full px-4 py-2 text-xs font-bold shadow-lg">
                 12K+ abonnés
               </div>
             </div>
