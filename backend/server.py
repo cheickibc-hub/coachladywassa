@@ -64,8 +64,11 @@ async def get_current_user(request: Request) -> dict:
         raise HTTPException(status_code=401, detail="Invalid token")
 
 def set_auth_cookies(response: Response, access_token: str, refresh_token: str):
-    response.set_cookie(key="access_token", value=access_token, httponly=True, secure=False, samesite="lax", max_age=3600, path="/")
-    response.set_cookie(key="refresh_token", value=refresh_token, httponly=True, secure=False, samesite="lax", max_age=604800, path="/")
+    # Cross-origin (OVH ↔ Render) requires secure=True + samesite=none
+    prod = os.environ.get("COOKIE_SECURE", "false").lower() == "true"
+    samesite = "none" if prod else "lax"
+    response.set_cookie(key="access_token", value=access_token, httponly=True, secure=prod, samesite=samesite, max_age=3600, path="/")
+    response.set_cookie(key="refresh_token", value=refresh_token, httponly=True, secure=prod, samesite=samesite, max_age=604800, path="/")
 
 async def require_admin(request: Request) -> dict:
     user = await get_current_user(request)
@@ -421,7 +424,9 @@ async def refresh_token(request: Request, response: Response):
             raise HTTPException(status_code=401, detail="User not found")
         user_id = str(user["_id"])
         access_token = create_access_token(user_id, user["email"])
-        response.set_cookie(key="access_token", value=access_token, httponly=True, secure=False, samesite="lax", max_age=3600, path="/")
+        prod = os.environ.get("COOKIE_SECURE", "false").lower() == "true"
+        samesite = "none" if prod else "lax"
+        response.set_cookie(key="access_token", value=access_token, httponly=True, secure=prod, samesite=samesite, max_age=3600, path="/")
         return {"message": "Token refreshed"}
     except jwt.InvalidTokenError:
         raise HTTPException(status_code=401, detail="Invalid refresh token")
